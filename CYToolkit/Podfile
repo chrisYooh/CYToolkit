@@ -1,0 +1,6 @@
+platform :ios, '7.0'
+target 'CYToolkit' do
+    pod 'YYCategories', '~> 1.0.4'
+    pod 'Masonry', '~> 1.0.2'
+end
+
