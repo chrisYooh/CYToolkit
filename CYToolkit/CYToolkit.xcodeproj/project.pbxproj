@@ -21,6 +21,7 @@
 		F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DF1216AF68E0066A068 /* CYIdfa.m */; };
 		F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DF4216AF7030066A068 /* CYKeychain.m */; };
 		F2E46DF8216AF7D10066A068 /* CLLocation+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */; };
+		F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		F2E46DF4216AF7030066A068 /* CYKeychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYKeychain.m; sourceTree = "<group>"; };
 		F2E46DF6216AF7D10066A068 /* CLLocation+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CLLocation+CYCategory.h"; sourceTree = "<group>"; };
 		F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46DF9216AF8D70066A068 /* CAAnimation+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+CYCategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 		F2E46DE8216AF4C50066A068 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				F2E46DF9216AF8D70066A068 /* CAAnimation+CYCategory.h */,
+				F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
 				F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */,
+				F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */,
 				F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
 				F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */,
