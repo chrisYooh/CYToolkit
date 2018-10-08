@@ -22,6 +22,14 @@
 		F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DF4216AF7030066A068 /* CYKeychain.m */; };
 		F2E46DF8216AF7D10066A068 /* CLLocation+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */; };
 		F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */; };
+		F2E46E0A216AFA900066A068 /* NSDate+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E09216AFA900066A068 /* NSDate+CYCategory.m */; };
+		F2E46E0D216AFAF90066A068 /* NSDecimalNumber+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E0C216AFAF90066A068 /* NSDecimalNumber+CYCategory.m */; };
+		F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E12216AFC940066A068 /* NSString+CYCategory.m */; };
+		F2E46E16216AFD480066A068 /* UIButton+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E15216AFD480066A068 /* UIButton+CYCategory.m */; };
+		F2E46E19216AFD840066A068 /* UIColor+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E18216AFD840066A068 /* UIColor+CYCategory.m */; };
+		F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E1B216AFDC20066A068 /* UIFont+CYCategory.m */; };
+		F2E46E1F216AFFA10066A068 /* UIView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E1E216AFFA10066A068 /* UIView+CYCategory.m */; };
+		F2E46E22216B01170066A068 /* UIWebView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46E21216B01170066A068 /* UIWebView+CYCategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +81,22 @@
 		F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+CYCategory.m"; sourceTree = "<group>"; };
 		F2E46DF9216AF8D70066A068 /* CAAnimation+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+CYCategory.h"; sourceTree = "<group>"; };
 		F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E08216AFA900066A068 /* NSDate+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E09216AFA900066A068 /* NSDate+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E0B216AFAF90066A068 /* NSDecimalNumber+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDecimalNumber+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E0C216AFAF90066A068 /* NSDecimalNumber+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDecimalNumber+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E11216AFC940066A068 /* NSString+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E12216AFC940066A068 /* NSString+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E14216AFD480066A068 /* UIButton+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E15216AFD480066A068 /* UIButton+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E17216AFD840066A068 /* UIColor+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E18216AFD840066A068 /* UIColor+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E1A216AFDC20066A068 /* UIFont+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E1B216AFDC20066A068 /* UIFont+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E1D216AFFA10066A068 /* UIView+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E1E216AFFA10066A068 /* UIView+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+CYCategory.m"; sourceTree = "<group>"; };
+		F2E46E20216B01170066A068 /* UIWebView+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+CYCategory.h"; sourceTree = "<group>"; };
+		F2E46E21216B01170066A068 /* UIWebView+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+CYCategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,43 +195,131 @@
 			isa = PBXGroup;
 			children = (
 				F2E46DE9216AF4CC0066A068 /* Categories */,
-				F2E46DE8216AF4C50066A068 /* Animations */,
-				F2E46DE7216AF4B60066A068 /* CommonInfo */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		F2E46DE7216AF4B60066A068 /* CommonInfo */ = {
+		F2E46DE9216AF4CC0066A068 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E01216AF94D0066A068 /* CAAnimation */,
+				F2E46E02216AF94F0066A068 /* CLLocation */,
+				F2E46DFC216AF93D0066A068 /* NSDate */,
+				F2E46E06216AF99D0066A068 /* NSDecimalNumber */,
+				F2E46DFD216AF9440066A068 /* NSString */,
+				F2E46E05216AF99A0066A068 /* UIButton */,
+				F2E46E04216AF9980066A068 /* UIColor */,
+				F2E46E03216AF9520066A068 /* UIDevice */,
+				F2E46E07216AF9BA0066A068 /* UIFont */,
+				F2E46DFE216AF9460066A068 /* UIView */,
+				F2E46E00216AF94B0066A068 /* UIWebView */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		F2E46DFC216AF93D0066A068 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E08216AFA900066A068 /* NSDate+CYCategory.h */,
+				F2E46E09216AFA900066A068 /* NSDate+CYCategory.m */,
+			);
+			path = NSDate;
+			sourceTree = "<group>";
+		};
+		F2E46DFD216AF9440066A068 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E11216AFC940066A068 /* NSString+CYCategory.h */,
+				F2E46E12216AFC940066A068 /* NSString+CYCategory.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		F2E46DFE216AF9460066A068 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E1D216AFFA10066A068 /* UIView+CYCategory.h */,
+				F2E46E1E216AFFA10066A068 /* UIView+CYCategory.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		F2E46E00216AF94B0066A068 /* UIWebView */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E20216B01170066A068 /* UIWebView+CYCategory.h */,
+				F2E46E21216B01170066A068 /* UIWebView+CYCategory.m */,
+			);
+			path = UIWebView;
+			sourceTree = "<group>";
+		};
+		F2E46E01216AF94D0066A068 /* CAAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46DF9216AF8D70066A068 /* CAAnimation+CYCategory.h */,
+				F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */,
+			);
+			path = CAAnimation;
+			sourceTree = "<group>";
+		};
+		F2E46E02216AF94F0066A068 /* CLLocation */ = {
 			isa = PBXGroup;
 			children = (
 				F2E46DEA216AF4FD0066A068 /* CYLocation.h */,
 				F2E46DEB216AF4FD0066A068 /* CYLocation.m */,
+				F2E46DF6216AF7D10066A068 /* CLLocation+CYCategory.h */,
+				F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */,
+			);
+			path = CLLocation;
+			sourceTree = "<group>";
+		};
+		F2E46E03216AF9520066A068 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
 				F2E46DED216AF6400066A068 /* UIDevice+CYCategory.h */,
 				F2E46DEE216AF6400066A068 /* UIDevice+CYCategory.m */,
 				F2E46DF0216AF68E0066A068 /* CYIdfa.h */,
 				F2E46DF1216AF68E0066A068 /* CYIdfa.m */,
 				F2E46DF3216AF7030066A068 /* CYKeychain.h */,
 				F2E46DF4216AF7030066A068 /* CYKeychain.m */,
-				F2E46DF6216AF7D10066A068 /* CLLocation+CYCategory.h */,
-				F2E46DF7216AF7D10066A068 /* CLLocation+CYCategory.m */,
 			);
-			path = CommonInfo;
+			path = UIDevice;
 			sourceTree = "<group>";
 		};
-		F2E46DE8216AF4C50066A068 /* Animations */ = {
+		F2E46E04216AF9980066A068 /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
-				F2E46DF9216AF8D70066A068 /* CAAnimation+CYCategory.h */,
-				F2E46DFA216AF8D70066A068 /* CAAnimation+CYCategory.m */,
+				F2E46E17216AFD840066A068 /* UIColor+CYCategory.h */,
+				F2E46E18216AFD840066A068 /* UIColor+CYCategory.m */,
 			);
-			path = Animations;
+			path = UIColor;
 			sourceTree = "<group>";
 		};
-		F2E46DE9216AF4CC0066A068 /* Categories */ = {
+		F2E46E05216AF99A0066A068 /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
+				F2E46E14216AFD480066A068 /* UIButton+CYCategory.h */,
+				F2E46E15216AFD480066A068 /* UIButton+CYCategory.m */,
 			);
-			path = Categories;
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		F2E46E06216AF99D0066A068 /* NSDecimalNumber */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E0B216AFAF90066A068 /* NSDecimalNumber+CYCategory.h */,
+				F2E46E0C216AFAF90066A068 /* NSDecimalNumber+CYCategory.m */,
+			);
+			path = NSDecimalNumber;
+			sourceTree = "<group>";
+		};
+		F2E46E07216AF9BA0066A068 /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				F2E46E1A216AFDC20066A068 /* UIFont+CYCategory.h */,
+				F2E46E1B216AFDC20066A068 /* UIFont+CYCategory.m */,
+			);
+			path = UIFont;
 			sourceTree = "<group>";
 		};
 		FE56527DA585D6F9C1929DC2 /* Frameworks */ = {
@@ -374,12 +486,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
+				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
 				F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */,
 				F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */,
+				F2E46E0A216AFA900066A068 /* NSDate+CYCategory.m in Sources */,
 				F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */,
+				F2E46E19216AFD840066A068 /* UIColor+CYCategory.m in Sources */,
+				F2E46E16216AFD480066A068 /* UIButton+CYCategory.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
+				F2E46E0D216AFAF90066A068 /* NSDecimalNumber+CYCategory.m in Sources */,
+				F2E46E1F216AFFA10066A068 /* UIView+CYCategory.m in Sources */,
+				F2E46E22216B01170066A068 /* UIWebView+CYCategory.m in Sources */,
 				F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */,
 				F2E46DEF216AF6400066A068 /* UIDevice+CYCategory.m in Sources */,
 				F2E46DF8216AF7D10066A068 /* CLLocation+CYCategory.m in Sources */,
