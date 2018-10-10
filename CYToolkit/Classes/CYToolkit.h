@@ -11,6 +11,7 @@
 
 #import "CAAnimation+CYCategory.h"
 #import "CLLocation+CYCategory.h"
+#Import "CYCompatible.h"
 #import "NSDate+CYCategory.h"
 #import "NSDecimalNumber+CYCategory.h"
 #import "NSString+CYCategory.h"

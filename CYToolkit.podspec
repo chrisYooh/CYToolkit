@@ -25,6 +25,11 @@ Pod::Spec.new do |s|
    ss.public_header_files = "CYToolkit/Classes/CLLocation/*.h"
   end
 
+  s.subspec 'Compatible' do |ss|
+   ss.source_files = "CYToolkit/Classes/Compatible/*"
+   ss.public_header_files = "CYToolkit/Classes/Compatible/*.h"
+  end
+
   s.subspec 'NSDate' do |ss|
     ss.source_files = "CYToolkit/Classes/NSDate/*"
     ss.public_header_files = "CYToolkit/Classes/NSDate/*.h"
