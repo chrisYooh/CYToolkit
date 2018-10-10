@@ -21,7 +21,7 @@
     [animation setBaseConfig];
     
     animation.duration = duration;
-    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.type = kCATransitionFade;
     
     return animation;
