@@ -14,6 +14,7 @@
 #import "CYCompatible.h"
 #import "NSDate+CYCategory.h"
 #import "NSDecimalNumber+CYCategory.h"
+#import "NSObject+CYCategory.h"
 #import "NSString+CYCategory.h"
 #import "UIButton+CYCategory.h"
 #import "UIColor+CYCategory.h"
