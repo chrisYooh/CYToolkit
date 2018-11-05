@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28558D3AEAACEBCB537B812E /* libPods-CYToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */; };
+		F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -55,6 +56,8 @@
 		0B49B4CFF47C7F854DFCB5C1 /* Pods-CYToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		501CF6E5202CBA7199034EE8 /* Pods-CYToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CYCategory.h"; sourceTree = "<group>"; };
+		F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CYCategory.m"; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -141,6 +144,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F267D7F4218FEF8A0043C680 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */,
+				F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
 		F2E46DA8216AECBC0066A068 = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +219,7 @@
 				F2F6C12B216DE82300B5DD2E /* Compatible */,
 				F2E46DFC216AF93D0066A068 /* NSDate */,
 				F2E46E06216AF99D0066A068 /* NSDecimalNumber */,
+				F267D7F4218FEF8A0043C680 /* NSObject */,
 				F2E46DFD216AF9440066A068 /* NSString */,
 				F2E46E05216AF99A0066A068 /* UIButton */,
 				F2E46E04216AF9980066A068 /* UIColor */,
@@ -507,6 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */,
+				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
