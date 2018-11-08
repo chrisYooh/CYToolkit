@@ -9,6 +9,7 @@
 #ifndef CYToolkit_h
 #define CYToolkit_h
 
+#import "CYDefinitions.h"
 #import "CAAnimation+CYCategory.h"
 #import "CLLocation+CYCategory.h"
 #import "CYCompatible.h"

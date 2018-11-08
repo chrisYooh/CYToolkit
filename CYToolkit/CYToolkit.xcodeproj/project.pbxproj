@@ -56,6 +56,7 @@
 		0B49B4CFF47C7F854DFCB5C1 /* Pods-CYToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		501CF6E5202CBA7199034EE8 /* Pods-CYToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2458D58219406070094C41E /* CYDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYDefinitions.h; sourceTree = "<group>"; };
 		F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CYCategory.h"; sourceTree = "<group>"; };
 		F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CYCategory.m"; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E46E2F216B29C40066A068 /* CYToolkit.h */,
+				F2458D58219406070094C41E /* CYDefinitions.h */,
 				F2E46E01216AF94D0066A068 /* CAAnimation */,
 				F2E46E02216AF94F0066A068 /* CLLocation */,
 				F2F6C12B216DE82300B5DD2E /* Compatible */,
