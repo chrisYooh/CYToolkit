@@ -26,4 +26,10 @@
     [_testImageView cyOpenPreviewPower];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [UIView cyShowToast:@"捂脸fff"];
+}
+
 @end

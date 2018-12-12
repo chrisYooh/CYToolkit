@@ -77,8 +77,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UIView' do |ss|
-    ss.source_files = "CYToolkit/Classes/UIView/*"
-    ss.public_header_files = "CYToolkit/Classes/UIView/*.h"
+    ss.source_files = "CYToolkit/Classes/UIView/**/*"
+    ss.public_header_files = "CYToolkit/Classes/UIView/**/*.h"
   end
 
   s.subspec 'UIViewController' do |ss|

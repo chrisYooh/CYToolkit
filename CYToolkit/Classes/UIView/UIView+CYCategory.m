@@ -7,6 +7,7 @@
 //
 
 #import <objc/runtime.h>
+#import "CYToastView.h"
 
 #import "UIView+CYCategory.h"
 
@@ -122,6 +123,22 @@ static char cykActionHandlerLongPressGestureKey;
             block(gesture);
         }
     }
+}
+
+- (void)cyShowToast:(NSString *)toast {
+    [self cyShowToast:toast duration:3];
+}
+
+- (void)cyShowToast:(NSString *)toast duration:(NSTimeInterval)duration {
+    [CYToastView showToast:toast onParentView:self duration:duration];
+}
+
++ (void)cyShowToast:(NSString *)toast {
+    [self cyShowToast:toast duration:3];
+}
+
++ (void)cyShowToast:(NSString *)toast duration:(NSTimeInterval)duration {
+    [CYToastView showToast:toast onParentView:[UIApplication sharedApplication].delegate.window duration:duration];
 }
 
 @end

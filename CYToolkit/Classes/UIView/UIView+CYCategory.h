@@ -43,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)cyAddLongPressActionWithBlock:(CYGestureActionBlock)block;
 
+/** 提示Toast, + 方法直接展示在Window上面 */
+- (void)cyShowToast:(NSString *)toast;
+- (void)cyShowToast:(NSString *)toast duration:(NSTimeInterval)duration;
++ (void)cyShowToast:(NSString *)toast;
++ (void)cyShowToast:(NSString *)toast duration:(NSTimeInterval)duration;
+
 @end
 
 NS_ASSUME_NONNULL_END
