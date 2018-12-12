@@ -6,10 +6,11 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
-#import "CYCompatible.h"
-#import "CYDefinitions.h"
-
 #import "CYBigImageView.h"
+
+#define __screenWidth       [UIScreen mainScreen].bounds.size.width
+#define __screenHeight      [UIScreen mainScreen].bounds.size.height
+#define __baseWindow        [UIApplication sharedApplication].delegate.window
 
 static const float glassViewOpacity = 0.8;              /* 背景蒙层透明度 */
 static const float appearDisappearDuration = 0.2;       /* 图片出现、消失动画时长 */
@@ -128,7 +129,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
     float threScale = _scrollView.minimumZoomScale;
     float animationDuration = scaleChangeDuration;
     
-    cyWeakSelf(weakSelf);
+    __weak CYBigImageView *weakSelf;
     if (_scrollView.zoomScale <= threScale) {
         /* 放大 */
         [UIView animateWithDuration:animationDuration animations:^{
@@ -168,7 +169,8 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
 }
 
 - (void)glassViewDisappear {
-    cyWeakSelf(weakSelf);
+    
+    __weak CYBigImageView *weakSelf;
     [UIView animateWithDuration:appearDisappearDuration animations:^{
         [weakSelf.glassView setAlpha:0];
     }];
@@ -194,7 +196,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
 
 - (void)imageViewDisappear {
     
-    cyWeakSelf(weakSelf);
+    __weak CYBigImageView *weakSelf;
     [UIView animateWithDuration:appearDisappearDuration animations:^{
         [weakSelf.imageView setFrame:weakSelf.appearRect];
     } completion:^(BOOL finished) {
@@ -231,9 +233,9 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
     float heightRatio = screenSize.height / imageSize.height;
     
     if (widthRatio < heightRatio) {
-        _imageDisplaySize = CGSizeMake(CYDefScreenWidth, imageSize.height * widthRatio);
+        _imageDisplaySize = CGSizeMake(__screenWidth, imageSize.height * widthRatio);
     } else {
-        _imageDisplaySize = CGSizeMake(imageSize.width * heightRatio, CYDefScreenHeight);
+        _imageDisplaySize = CGSizeMake(imageSize.width * heightRatio, __screenHeight);
     }
 }
 
@@ -255,7 +257,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
 #pragma mark - User Interface
 
 + (CYBigImageView *)previewImage:(UIImage *)image {
-    CGRect appearRect = CGRectMake(CYDefScreenWidth / 2, CYDefScreenHeight / 2, 1, 1);
+    CGRect appearRect = CGRectMake(__screenWidth / 2, __screenHeight / 2, 1, 1);
     CYBigImageView *tmpView = [self previewImage:image appearRect:appearRect];
     return tmpView;
 }
@@ -271,7 +273,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
     /* Config */
     [newView configWithImage:image];
     newView.appearRect = appearRect;
-    [CYDefBaseWindow addSubview:newView];
+    [__baseWindow addSubview:newView];
     
     /* Appear animations */
     [newView viewAppear];
@@ -285,7 +287,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
         return nil;
     }
     
-    CGRect appearRect = [CYDefBaseWindow convertRect:imageView.frame fromView:imageView.superview];
+    CGRect appearRect = [__baseWindow convertRect:imageView.frame fromView:imageView.superview];
     CYBigImageView *tmpView = [self previewImage:imageView.image appearRect:appearRect];
     return tmpView;
 }
