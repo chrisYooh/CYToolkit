@@ -6,9 +6,14 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
+#import "CYToolkit.h"
+#import "LYSmartImageView.h"
+
 #import "ViewController.h"
 
 @interface ViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *testImageView;
 
 @end
 
@@ -16,8 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [_testImageView setUserInteractionEnabled:YES];
+    [_testImageView cyOpenPreviewPower];
 }
-
 
 @end

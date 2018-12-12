@@ -21,6 +21,7 @@
 #import "UIColor+CYCategory.h"
 #import "UIDevice+CYCategory.h"
 #import "UIFont+CYCategory.h"
+#import "UIImageView+CYCategory.h"
 #import "UIView+CYCategory.h"
 #import "UIViewController+CYCategory.h"
 #import "UIWebView+CYCategory.h"

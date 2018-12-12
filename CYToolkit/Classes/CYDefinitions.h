@@ -34,5 +34,6 @@
 #define CYDefScreenFrame      [UIScreen mainScreen].frame
 #define CYDefScreenWidth      [UIScreen mainScreen].bounds.size.width
 #define CYDefScreenHeight     [UIScreen mainScreen].bounds.size.height
+#define CYDefBaseWindow       [UIApplication sharedApplication].delegate.window
 
 #endif /* CYDefinitions_h */

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28558D3AEAACEBCB537B812E /* libPods-CYToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */; };
+		F206043A21BFC16C0016DD66 /* LYSmartImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206043921BFC16C0016DD66 /* LYSmartImageView.m */; };
+		F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044021BFC5270016DD66 /* CYBigImageView.m */; };
+		F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044421C09C450016DD66 /* UIImageView+CYCategory.m */; };
 		F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
@@ -56,6 +59,12 @@
 		0B49B4CFF47C7F854DFCB5C1 /* Pods-CYToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		501CF6E5202CBA7199034EE8 /* Pods-CYToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F206043821BFC16C0016DD66 /* LYSmartImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSmartImageView.h; sourceTree = "<group>"; };
+		F206043921BFC16C0016DD66 /* LYSmartImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSmartImageView.m; sourceTree = "<group>"; };
+		F206043F21BFC5270016DD66 /* CYBigImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYBigImageView.h; sourceTree = "<group>"; };
+		F206044021BFC5270016DD66 /* CYBigImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYBigImageView.m; sourceTree = "<group>"; };
+		F206044321C09C450016DD66 /* UIImageView+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CYCategory.h"; sourceTree = "<group>"; };
+		F206044421C09C450016DD66 /* UIImageView+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CYCategory.m"; sourceTree = "<group>"; };
 		F2458D58219406070094C41E /* CYDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYDefinitions.h; sourceTree = "<group>"; };
 		F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CYCategory.h"; sourceTree = "<group>"; };
 		F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CYCategory.m"; sourceTree = "<group>"; };
@@ -145,6 +154,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F206043B21BFC4D60016DD66 /* BigImageView */ = {
+			isa = PBXGroup;
+			children = (
+				F206043F21BFC5270016DD66 /* CYBigImageView.h */,
+				F206044021BFC5270016DD66 /* CYBigImageView.m */,
+			);
+			path = BigImageView;
+			sourceTree = "<group>";
+		};
+		F206044221C09C140016DD66 /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				F206044321C09C450016DD66 /* UIImageView+CYCategory.h */,
+				F206044421C09C450016DD66 /* UIImageView+CYCategory.m */,
+				F206043B21BFC4D60016DD66 /* BigImageView */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
 		F267D7F4218FEF8A0043C680 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +185,8 @@
 		F2E46DA8216AECBC0066A068 = {
 			isa = PBXGroup;
 			children = (
+				F206043821BFC16C0016DD66 /* LYSmartImageView.h */,
+				F206043921BFC16C0016DD66 /* LYSmartImageView.m */,
 				F2E46DE6216AF4A40066A068 /* Classes */,
 				F2E46DB3216AECBC0066A068 /* CYToolkit */,
 				F2E46DCC216AECBD0066A068 /* CYToolkitTests */,
@@ -227,6 +257,7 @@
 				F2E46E04216AF9980066A068 /* UIColor */,
 				F2E46E03216AF9520066A068 /* UIDevice */,
 				F2E46E07216AF9BA0066A068 /* UIFont */,
+				F206044221C09C140016DD66 /* UIImageView */,
 				F2E46DFE216AF9460066A068 /* UIView */,
 				F2E46E2B216B22910066A068 /* UIViewController */,
 				F2E46E00216AF94B0066A068 /* UIWebView */,
@@ -524,7 +555,9 @@
 				F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */,
 				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
+				F206043A21BFC16C0016DD66 /* LYSmartImageView.m in Sources */,
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
+				F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
 				F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */,
 				F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */,
@@ -532,6 +565,7 @@
 				F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */,
 				F2E46E19216AFD840066A068 /* UIColor+CYCategory.m in Sources */,
 				F2E46E16216AFD480066A068 /* UIButton+CYCategory.m in Sources */,
+				F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */,
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
