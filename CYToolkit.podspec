@@ -71,6 +71,11 @@ Pod::Spec.new do |s|
     ss.public_header_files = "CYToolkit/Classes/UIFont/*.h"
   end
 
+  s.subspec 'UIImage' do |ss|
+    ss.source_files = "CYToolkit/Classes/UIImage/**/*"
+    ss.public_header_files = "CYToolkit/Classes/UIImage/**/*.h"
+  end
+
   s.subspec 'UIImageView' do |ss|
     ss.source_files = "CYToolkit/Classes/UIImageView/**/*"
     ss.public_header_files = "CYToolkit/Classes/UIImageView/**/*.h"

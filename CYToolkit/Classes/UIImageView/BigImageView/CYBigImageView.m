@@ -129,7 +129,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
     float threScale = _scrollView.minimumZoomScale;
     float animationDuration = scaleChangeDuration;
     
-    __weak CYBigImageView *weakSelf;
+    __weak CYBigImageView *weakSelf = self;
     if (_scrollView.zoomScale <= threScale) {
         /* 放大 */
         [UIView animateWithDuration:animationDuration animations:^{
@@ -170,7 +170,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
 
 - (void)glassViewDisappear {
     
-    __weak CYBigImageView *weakSelf;
+    __weak CYBigImageView *weakSelf = self;
     [UIView animateWithDuration:appearDisappearDuration animations:^{
         [weakSelf.glassView setAlpha:0];
     }];
@@ -196,7 +196,7 @@ static const float maxScaleMinValue = 2.0f;             /* 图片放大、缩小
 
 - (void)imageViewDisappear {
     
-    __weak CYBigImageView *weakSelf;
+    __weak CYBigImageView *weakSelf = self;
     [UIView animateWithDuration:appearDisappearDuration animations:^{
         [weakSelf.imageView setFrame:weakSelf.appearRect];
     } completion:^(BOOL finished) {

@@ -12,6 +12,7 @@
 		F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044021BFC5270016DD66 /* CYBigImageView.m */; };
 		F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044421C09C450016DD66 /* UIImageView+CYCategory.m */; };
 		F206044C21C0A6040016DD66 /* CYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044B21C0A6040016DD66 /* CYToastView.m */; };
+		F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044F21C0AC480016DD66 /* UIImage+CYCategory.m */; };
 		F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
@@ -68,6 +69,8 @@
 		F206044421C09C450016DD66 /* UIImageView+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CYCategory.m"; sourceTree = "<group>"; };
 		F206044A21C0A6040016DD66 /* CYToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYToastView.h; sourceTree = "<group>"; };
 		F206044B21C0A6040016DD66 /* CYToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYToastView.m; sourceTree = "<group>"; };
+		F206044E21C0AC480016DD66 /* UIImage+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CYCategory.h"; sourceTree = "<group>"; };
+		F206044F21C0AC480016DD66 /* UIImage+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CYCategory.m"; sourceTree = "<group>"; };
 		F2458D58219406070094C41E /* CYDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYDefinitions.h; sourceTree = "<group>"; };
 		F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CYCategory.h"; sourceTree = "<group>"; };
 		F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CYCategory.m"; sourceTree = "<group>"; };
@@ -176,6 +179,15 @@
 			path = UIImageView;
 			sourceTree = "<group>";
 		};
+		F206044D21C0AC150016DD66 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				F206044E21C0AC480016DD66 /* UIImage+CYCategory.h */,
+				F206044F21C0AC480016DD66 /* UIImage+CYCategory.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
 		F267D7F4218FEF8A0043C680 /* NSObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +272,7 @@
 				F2E46E04216AF9980066A068 /* UIColor */,
 				F2E46E03216AF9520066A068 /* UIDevice */,
 				F2E46E07216AF9BA0066A068 /* UIFont */,
+				F206044D21C0AC150016DD66 /* UIImage */,
 				F206044221C09C140016DD66 /* UIImageView */,
 				F2E46DFE216AF9460066A068 /* UIView */,
 				F2E46E2B216B22910066A068 /* UIViewController */,
@@ -575,6 +588,7 @@
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
+				F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */,
 				F2E46E0D216AFAF90066A068 /* NSDecimalNumber+CYCategory.m in Sources */,
 				F2E46E1F216AFFA10066A068 /* UIView+CYCategory.m in Sources */,
 				F2E46E22216B01170066A068 /* UIWebView+CYCategory.m in Sources */,
