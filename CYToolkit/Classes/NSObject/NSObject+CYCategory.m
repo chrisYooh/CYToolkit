@@ -6,9 +6,13 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
+#import <objc/runtime.h>
+
 #import "NSObject+CYCategory.h"
 
 @implementation NSObject (CYCategory)
+
+#pragma mark - Instance Save & Load
 
 - (BOOL)cySaveForKey:(NSString *)objKey {
     
@@ -74,7 +78,41 @@
     return nil;
 }
 
-#pragma mark - MISC
+- (void)cyReadAllAttrWithDecoder:(NSCoder *)aDecoder {
+    
+    unsigned int count = 0;
+    Ivar *ivars = class_copyIvarList([self class], &count);
+    for (int i = 0; i < count; i++) {
+        Ivar ivar = ivars[i];
+        const char *name = ivar_getName(ivar);
+        NSString *key = [NSString stringWithUTF8String:name];
+        id value = [aDecoder decodeObjectForKey:key];
+        if (nil != value) {
+            [self setValue:value forKey:key];
+        }
+    }
+    free(ivars);
+}
+
+- (void)cySaveAllAttrWithCoder:(NSCoder *)aCoder {
+    
+    unsigned int count = 0;
+    Ivar *ivars = class_copyIvarList([self class], &count);
+    
+    for (int i = 0; i < count; i++) {
+        
+        Ivar ivar = ivars[i];
+        const char *name = ivar_getName(ivar);
+        NSString *key = [NSString stringWithUTF8String:name];
+        id value = [self valueForKey:key];
+        if ([value respondsToSelector:@selector(encodeWithCoder:)]) {
+            [aCoder encodeObject:value forKey:key];
+        }
+    }
+    free(ivars);
+}
+
+#pragma mark -
 
 + (NSString *)cyArchiverPath{
     NSString *path = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CYArchiver"];
@@ -88,5 +126,39 @@
     }
     return path;
 }
+
+#pragma mark - String runtime
+
+- (id)cyPerformSelStr:(NSString *)selecterStr {
+    
+    id retObj = nil;
+    
+    SEL tmpSel = NSSelectorFromString(selecterStr);
+    if ([self respondsToSelector:tmpSel]) {
+        _Pragma("clang diagnostic push")
+        _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
+        retObj = [self performSelector:tmpSel];
+        _Pragma("clang diagnostic pop")
+    }
+    
+    return retObj;
+}
+
+- (id)cyPerformSelStr:(NSString *)selecterStr withObject:(nonnull id)object {
+    
+    id retObj = nil;
+    
+    SEL tmpSel = NSSelectorFromString(selecterStr);
+    if ([self respondsToSelector:tmpSel]) {
+        _Pragma("clang diagnostic push")
+        _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"")
+        retObj = [self performSelector:tmpSel withObject:object];
+        _Pragma("clang diagnostic pop")
+    }
+    
+    return retObj;
+}
+
+
 
 @end

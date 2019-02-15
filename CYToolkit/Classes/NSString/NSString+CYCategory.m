@@ -273,4 +273,33 @@
     
     return attributedString;
 }
+
+#pragma mark - 目录操作
+
+- (NSArray<NSString *> *)cyDirFileNames {
+    NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:self];
+    NSMutableArray *tmpMulArray = [[NSMutableArray alloc] init];
+    NSString *tmpFileName;
+    while ((tmpFileName = [dirEnum nextObject]) != nil) {
+        [tmpMulArray addObject:tmpFileName];
+    }
+    return tmpMulArray.copy;
+}
+
+- (NSArray<NSString *> *)cyDirFilePaths {
+    NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:self];
+    NSMutableArray *tmpMulArray = [[NSMutableArray alloc] init];
+    NSString *tmpFileName = nil;
+    while ((tmpFileName = [dirEnum nextObject]) != nil) {
+        [tmpMulArray addObject:[self stringByAppendingPathComponent:tmpFileName]];
+    }
+    return tmpMulArray.copy;
+}
+
+- (id)cyCreateInstance {
+    Class strClass = NSClassFromString(self);
+    id tmpObj = [[strClass alloc] init];
+    return tmpObj;
+}
+
 @end

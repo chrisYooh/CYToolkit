@@ -106,6 +106,24 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSAttributedString *)cyLineSpaceStringWithString:(NSString *)inputStr
                                           lineSpace:(float)lineSpace;
 
+
+/**
+ * 目录遍历
+ * 返回目录内文件名
+ */
+- (NSArray<NSString *> *)cyDirFileNames;
+
+/**
+ * 目录遍历
+ * 返回目录内文件绝对路径
+ */
+- (NSArray<NSString *> *)cyDirFilePaths;
+
+/**
+ * 以字符串为输入创建类对象
+ */
+- (id)cyCreateInstance;
+
 @end
 
 NS_ASSUME_NONNULL_END
