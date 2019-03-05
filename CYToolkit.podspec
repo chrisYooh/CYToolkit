@@ -96,6 +96,13 @@ Pod::Spec.new do |s|
     ss.public_header_files = "CYToolkit/Classes/UIWebView/*.h"
   end
 
+  s.subspec 'Tools' do |ss|
+    ss.source_files = "CYToolkit/Classes/Tools/*"
+    ss.public_header_files = "CYToolkit/Classes/Tools/*.h"
+    ss.dependency "CYToolkit/Compatible"
+    ss.dependency "CYToolkit/UIImage"
+  end
+
   # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
   # s.library   = "z"
