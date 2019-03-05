@@ -14,6 +14,8 @@
 		F206044C21C0A6040016DD66 /* CYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044B21C0A6040016DD66 /* CYToastView.m */; };
 		F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044F21C0AC480016DD66 /* UIImage+CYCategory.m */; };
 		F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */; };
+		F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A38F5F222E583A0036F827 /* CYVideoTool.m */; };
+		F2A38F63222E61340036F827 /* CYVideoToolTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -74,6 +76,10 @@
 		F2458D58219406070094C41E /* CYDefinitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYDefinitions.h; sourceTree = "<group>"; };
 		F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CYCategory.h"; sourceTree = "<group>"; };
 		F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CYCategory.m"; sourceTree = "<group>"; };
+		F2A38F5E222E583A0036F827 /* CYVideoTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideoTool.h; sourceTree = "<group>"; };
+		F2A38F5F222E583A0036F827 /* CYVideoTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideoTool.m; sourceTree = "<group>"; };
+		F2A38F61222E61340036F827 /* CYVideoToolTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideoToolTestViewController.h; sourceTree = "<group>"; };
+		F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideoToolTestViewController.m; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -197,6 +203,15 @@
 			path = NSObject;
 			sourceTree = "<group>";
 		};
+		F2A38F5D222E57F60036F827 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F2A38F5E222E583A0036F827 /* CYVideoTool.h */,
+				F2A38F5F222E583A0036F827 /* CYVideoTool.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 		F2E46DA8216AECBC0066A068 = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +244,8 @@
 				F2E46DB5216AECBC0066A068 /* AppDelegate.m */,
 				F2E46DB7216AECBC0066A068 /* ViewController.h */,
 				F2E46DB8216AECBC0066A068 /* ViewController.m */,
+				F2A38F61222E61340036F827 /* CYVideoToolTestViewController.h */,
+				F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */,
 				F2E46DBA216AECBC0066A068 /* Main.storyboard */,
 				F2E46DBD216AECBD0066A068 /* Assets.xcassets */,
 				F2E46DBF216AECBD0066A068 /* LaunchScreen.storyboard */,
@@ -261,6 +278,7 @@
 			children = (
 				F2E46E2F216B29C40066A068 /* CYToolkit.h */,
 				F2458D58219406070094C41E /* CYDefinitions.h */,
+				F2A38F5D222E57F60036F827 /* Tools */,
 				F2E46E01216AF94D0066A068 /* CAAnimation */,
 				F2E46E02216AF94F0066A068 /* CLLocation */,
 				F2F6C12B216DE82300B5DD2E /* Compatible */,
@@ -578,6 +596,7 @@
 				F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */,
 				F206044C21C0A6040016DD66 /* CYToastView.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
+				F2A38F63222E61340036F827 /* CYVideoToolTestViewController.m in Sources */,
 				F2E46DF5216AF7030066A068 /* CYKeychain.m in Sources */,
 				F2E46DFB216AF8D70066A068 /* CAAnimation+CYCategory.m in Sources */,
 				F2E46E0A216AFA900066A068 /* NSDate+CYCategory.m in Sources */,
@@ -587,6 +606,7 @@
 				F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */,
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
+				F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
 				F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */,
 				F2E46E0D216AFAF90066A068 /* NSDecimalNumber+CYCategory.m in Sources */,

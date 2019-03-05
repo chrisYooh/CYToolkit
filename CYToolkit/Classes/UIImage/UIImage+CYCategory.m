@@ -10,6 +10,49 @@
 
 @implementation UIImage (CYCategory)
 
++ (UIImage *)cyImageWithSampleBuffer:(CMSampleBufferRef)bufferRef fromFrontCamera:(BOOL)fromFrontCamera {
+    
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(bufferRef);
+    
+    CGImageRef quartzImage = nil;
+    CVPixelBufferLockBaseAddress(imageBuffer, 0);
+    {
+        void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
+        
+        size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+        size_t width = CVPixelBufferGetWidth(imageBuffer);
+        size_t height = CVPixelBufferGetHeight(imageBuffer);
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        
+        CGContextRef context =
+        CGBitmapContextCreate(baseAddress,
+                              width,
+                              height,
+                              8,
+                              bytesPerRow,
+                              colorSpace,
+                              kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst
+                              );
+        quartzImage = CGBitmapContextCreateImage(context);
+        
+        CGContextRelease(context);
+        CGColorSpaceRelease(colorSpace);
+    }
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+    /* 前摄像头取 LeftMirrored， 后摄像头取Right */
+    UIImage *tmpImage = nil;
+    if (fromFrontCamera) {
+        tmpImage = [UIImage imageWithCGImage:quartzImage scale:1 orientation:UIImageOrientationLeftMirrored];
+    } else {
+        tmpImage = [UIImage imageWithCGImage:quartzImage scale:1 orientation:UIImageOrientationRight];
+    }
+    CGImageRelease(quartzImage);
+    
+    return tmpImage;
+}
+
 - (UIImage *)cyUpOrientationImage {
     
     if (UIImageOrientationUp == self.imageOrientation) {
