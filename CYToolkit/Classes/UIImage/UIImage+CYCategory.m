@@ -11,8 +11,13 @@
 @implementation UIImage (CYCategory)
 
 + (UIImage *)cyImageWithSampleBuffer:(CMSampleBufferRef)bufferRef fromFrontCamera:(BOOL)fromFrontCamera {
-    
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(bufferRef);
+    return [self cyImageWithImageBuffer:imageBuffer fromFrontCamera:fromFrontCamera];
+}
+
++ (UIImage *)cyImageWithImageBuffer:(CVImageBufferRef)imgbufferRef fromFrontCamera:(BOOL)fromFrontCamera {
+    
+    CVImageBufferRef imageBuffer = imgbufferRef;
     
     CGImageRef quartzImage = nil;
     CVPixelBufferLockBaseAddress(imageBuffer, 0);

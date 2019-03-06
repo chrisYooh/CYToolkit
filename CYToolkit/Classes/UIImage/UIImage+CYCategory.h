@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * fromFrontCamera: 是否通过前置摄像头拍着
  */
 + (UIImage *)cyImageWithSampleBuffer:(CMSampleBufferRef)bufferRef fromFrontCamera:(BOOL)fromFrontCamera;
++ (UIImage *)cyImageWithImageBuffer:(CVImageBufferRef)imgbufferRef fromFrontCamera:(BOOL)fromFrontCamera;
 
 /**
  * 图片方向矫正
