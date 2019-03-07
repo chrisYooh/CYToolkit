@@ -119,6 +119,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSArray<NSString *> *)cyDirFilePaths;
 
+/* 查看文件大小
+ * 字符串本身为文件路径 */
+- (NSString *)cyFileSize;
+
+/* 常用路径 */
++ (NSString *)cyMainBundlePath;
++ (NSString *)cyDocumentsPath;
++ (NSString *)cyCachesPath;
++ (NSString *)cyAppSupportPath;
++ (NSString *)cyTemporaryPath;
++ (NSString *)cyHomePath;
+
 /**
  * 以字符串为输入创建类对象
  */

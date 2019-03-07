@@ -296,6 +296,60 @@
     return tmpMulArray.copy;
 }
 
+- (NSString *)cyFileSize {
+    if (NO == [[NSFileManager defaultManager] fileExistsAtPath:self]) {
+        return nil;
+    }
+    
+    NSDictionary *dicAttr = [[NSFileManager defaultManager] attributesOfItemAtPath:self error:nil];
+    float fileSize = [[dicAttr objectForKey:@"NSFileSize"] floatValue];
+    
+    NSString *fileSizeStr = nil;
+    if (fileSize < 100) {
+        fileSizeStr = [NSString stringWithFormat:@"%.0f B", fileSize];
+    } else if (fileSize < 100 * 1024) {
+        fileSizeStr = [NSString stringWithFormat:@"%.2f KB", fileSize / 1024];
+    } else if (fileSize < 100 * 1024 * 1024) {
+        fileSizeStr = [NSString stringWithFormat:@"%.2f MB", fileSize / (1024 * 1024)];
+    } else if (fileSize < 100.0 * 1024 * 1024 * 1024) {
+        fileSizeStr = [NSString stringWithFormat:@"%.2f GB", fileSize / (1024 * 1024 * 1024)];
+    } else if (fileSize < 100.0 * 1024 * 1024 * 1024 * 1024) {
+        fileSizeStr = [NSString stringWithFormat:@"%.2f TB", fileSize / (1024 * 1024 * 1024 * 1024)];
+    }
+    
+    return fileSizeStr;
+}
+
++ (NSString *)cyMainBundlePath {
+    NSString *tmpPath = [[NSBundle mainBundle] bundlePath];
+    return tmpPath;
+}
+
++ (NSString *)cyDocumentsPath {
+    NSString *tmpPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    return tmpPath;
+}
+
++ (NSString *)cyCachesPath {
+    NSString *tmpPath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+    return tmpPath;
+}
+
++ (NSString *)cyAppSupportPath {
+    NSString *tmpPath = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES).firstObject;
+    return tmpPath;
+}
+
++ (NSString *)cyTemporaryPath {
+    NSString *tmpPath = NSTemporaryDirectory();
+    return tmpPath;
+}
+
++ (NSString *)cyHomePath {
+    NSString *tmpPath = NSHomeDirectory();
+    return tmpPath;
+}
+
 - (id)cyCreateInstance {
     Class strClass = NSClassFromString(self);
     id tmpObj = [[strClass alloc] init];
