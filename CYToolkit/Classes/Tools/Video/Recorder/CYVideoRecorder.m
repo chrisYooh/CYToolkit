@@ -394,6 +394,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     
     /* Start record */
+    [[NSFileManager defaultManager] removeItemAtPath:[self __recordPath] error:nil];
     [_fileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:[self __recordPath]] recordingDelegate:self];
     
     /* set status */

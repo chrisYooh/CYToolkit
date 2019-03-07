@@ -32,6 +32,8 @@
         return;
     }
     
+    [[NSFileManager defaultManager] removeItemAtPath:[self __compressPath] error:nil];
+    
     @try {
         size_t read = 0, write = 0;
         

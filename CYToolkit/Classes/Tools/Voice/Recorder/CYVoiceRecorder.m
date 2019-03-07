@@ -64,6 +64,8 @@
         return NO;
     }
     
+    [[NSFileManager defaultManager] removeItemAtPath:[self __recordPath] error:nil];
+    
     /* Config recorder */
     NSError *error = nil;
     _recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:[self __recordPath]]
