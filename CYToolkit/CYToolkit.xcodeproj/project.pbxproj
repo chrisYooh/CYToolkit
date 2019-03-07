@@ -22,6 +22,7 @@
 		F2A3917F2230BBEA0036F827 /* CYVoiceRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A3917E2230BBEA0036F827 /* CYVoiceRecorder.m */; };
 		F2A391822230BBF80036F827 /* CYVoiceCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391812230BBF80036F827 /* CYVoiceCompressor.m */; };
 		F2A391852230BC060036F827 /* CYVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391842230BC060036F827 /* CYVoicePlayer.m */; };
+		F2A3918A2230CF1D0036F827 /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -98,6 +99,8 @@
 		F2A391812230BBF80036F827 /* CYVoiceCompressor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoiceCompressor.m; sourceTree = "<group>"; };
 		F2A391832230BC060036F827 /* CYVoicePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVoicePlayer.h; sourceTree = "<group>"; };
 		F2A391842230BC060036F827 /* CYVoicePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoicePlayer.m; sourceTree = "<group>"; };
+		F2A391882230CF1D0036F827 /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAVAssetExportSession.h; sourceTree = "<group>"; };
+		F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAVAssetExportSession.m; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -301,6 +304,7 @@
 			children = (
 				F2A391762230BBA90036F827 /* CYVideoCompressor.h */,
 				F2A391772230BBA90036F827 /* CYVideoCompressor.m */,
+				F2A391872230CEF80036F827 /* SDAVAsset */,
 			);
 			path = Compressor;
 			sourceTree = "<group>";
@@ -312,6 +316,15 @@
 				F2A391742230BB730036F827 /* CYVideoRecorder.m */,
 			);
 			path = Recorder;
+			sourceTree = "<group>";
+		};
+		F2A391872230CEF80036F827 /* SDAVAsset */ = {
+			isa = PBXGroup;
+			children = (
+				F2A391882230CF1D0036F827 /* SDAVAssetExportSession.h */,
+				F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */,
+			);
+			path = SDAVAsset;
 			sourceTree = "<group>";
 		};
 		F2E46DA8216AECBC0066A068 = {
@@ -695,6 +708,7 @@
 				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
 				F206043A21BFC16C0016DD66 /* LYSmartImageView.m in Sources */,
+				F2A3918A2230CF1D0036F827 /* SDAVAssetExportSession.m in Sources */,
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
 				F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */,
 				F206044C21C0A6040016DD66 /* CYToastView.m in Sources */,

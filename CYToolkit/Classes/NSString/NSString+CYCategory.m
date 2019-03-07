@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCrypto.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "NSDecimalNumber+CYCategory.h"
 
 #import "NSString+CYCategory.h"
@@ -318,6 +319,26 @@
     }
     
     return fileSizeStr;
+}
+
+- (void)cySaveToAlbum {
+    
+    if (NO == [[NSFileManager defaultManager] fileExistsAtPath:self]) {
+        NSLog(@"目标文件不存在");
+        return;
+    }
+    
+    ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
+    NSURL *fileUrl = [NSURL fileURLWithPath:self];
+    
+    [assetsLibrary writeVideoAtPathToSavedPhotosAlbum: fileUrl
+                                      completionBlock:^(NSURL *assetURL, NSError *error) {
+                                          if (error) {
+                                              NSLog(@"Save to album failed, ERROR：%@", error.localizedDescription);
+                                          } else {
+                                              NSLog(@"Save to album succeed!");
+                                          }
+                                      }];
 }
 
 + (NSString *)cyMainBundlePath {

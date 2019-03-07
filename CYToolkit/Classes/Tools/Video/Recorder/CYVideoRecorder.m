@@ -215,8 +215,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                       fromConnections:(NSArray<AVCaptureConnection *> *)connections
                                 error:(nullable NSError *)error {
     /* 录制结束 */
-    if ([_delegate respondsToSelector:@selector(recorderDidFinishRecord:)]) {
-        [_delegate recorderDidFinishRecord:self];
+    if ([_delegate respondsToSelector:@selector(recorder:didFinishRecordToFile:)]) {
+        [_delegate recorder:self didFinishRecordToFile:[self __recordPath]];
     }
 }
 

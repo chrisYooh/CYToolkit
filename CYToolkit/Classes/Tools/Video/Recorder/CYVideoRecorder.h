@@ -14,7 +14,7 @@
 @protocol CYVideoToolDelegate <NSObject>
 
 - (void)recorderDidStartRecord:(CYVideoRecorder *)recorder;
-- (void)recorderDidFinishRecord:(CYVideoRecorder *)recorder;
+- (void)recorder:(CYVideoRecorder *)recorder didFinishRecordToFile:(NSString *)filePath;
 - (void)recorder:(CYVideoRecorder *)recorder getSampleBuffer:(CMSampleBufferRef)bufferRef;
 
 @end
@@ -44,6 +44,7 @@
 - (void)stopRecord;         /* 结束录制 */
 
 - (void)forcusOnView:(UIView *)view withPoint:(CGPoint)point;   /* 对焦 */
+- (void)saveToAlbum;        /* 将最近完成的录制存入相册 */
 
 @end
 
