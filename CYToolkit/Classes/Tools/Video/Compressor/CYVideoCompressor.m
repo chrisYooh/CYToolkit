@@ -32,64 +32,6 @@
     return self;
 }
 
-#pragma mark -
-
-- (void)loadFile:(NSString *)srcFilePath {
-    if (NO == [[NSFileManager defaultManager] fileExistsAtPath:srcFilePath]) {
-        NSLog(@"未找到待压缩文件.\n");
-        return;
-    }
-    
-    [self __prepareWithSrcFile:srcFilePath dstFile:[self __compressFilePath]];
-}
-
-- (void)startCompress {
-    
-    cyWeakSelf(weakSelf);
-    [_exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
-        if ([weakSelf.delegate respondsToSelector:@selector(compressor:reportProgress:)]) {
-            [weakSelf.delegate compressor:weakSelf reportProgress:weakSelf.exportSession.progress];
-        }
-    }];
-    
-    /* Timer syn */
-    [_progressTimer invalidate];
-    _progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                                      target:self
-                                                    selector:@selector(compressCompletedHandle)
-                                                    userInfo:nil
-                                                     repeats:YES];
-}
-
-- (void)stopCompress {
-    [_exportSession cancelExport];
-    [_progressTimer invalidate];
-    _progressTimer = nil;
-}
-
-- (void)saveToAlbum {
-    [[self __compressFilePath] cySaveToAlbum];
-}
-
-#pragma mark -
-
-- (void)compressCompletedHandle {
-    
-    if (AVAssetExportSessionStatusCompleted != _exportSession.status) {
-        if ([_delegate respondsToSelector:@selector(compressorFailed:)]) {
-            [_delegate compressorFailed:self];
-        }
-        return;
-    }
-    
-    [_progressTimer invalidate];
-    _progressTimer = nil;
-    
-    if ([_delegate respondsToSelector:@selector(compressor:didFinishCompressToFile:)]) {
-        [_delegate compressor:self didFinishCompressToFile:[self __compressFilePath]];
-    }
-}
-
 #pragma mark - Compress Config
 
 - (void)__prepareWithSrcFile:(NSString *)srcFilePath dstFile:(NSString *)dstFilePath {
@@ -227,6 +169,62 @@
     NSString *tmpPath = [NSString cyTemporaryPath];
     tmpPath = [tmpPath stringByAppendingPathComponent:__CompressFileName];
     return tmpPath;
+}
+
+- (void)__compressCompletedHandle {
+    
+    if (AVAssetExportSessionStatusCompleted != _exportSession.status) {
+        if ([_delegate respondsToSelector:@selector(compressorFailed:)]) {
+            [_delegate compressorFailed:self];
+        }
+        return;
+    }
+    
+    [_progressTimer invalidate];
+    _progressTimer = nil;
+    
+    if ([_delegate respondsToSelector:@selector(compressor:didFinishCompressToFile:)]) {
+        [_delegate compressor:self didFinishCompressToFile:[self __compressFilePath]];
+    }
+}
+
+#pragma mark - User Interface
+
+- (void)loadFile:(NSString *)srcFilePath {
+    if (NO == [[NSFileManager defaultManager] fileExistsAtPath:srcFilePath]) {
+        NSLog(@"未找到待压缩文件.\n");
+        return;
+    }
+    
+    [self __prepareWithSrcFile:srcFilePath dstFile:[self __compressFilePath]];
+}
+
+- (void)startCompress {
+    
+    cyWeakSelf(weakSelf);
+    [_exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
+        if ([weakSelf.delegate respondsToSelector:@selector(compressor:reportProgress:)]) {
+            [weakSelf.delegate compressor:weakSelf reportProgress:weakSelf.exportSession.progress];
+        }
+    }];
+    
+    /* Timer syn */
+    [_progressTimer invalidate];
+    _progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                      target:self
+                                                    selector:@selector(__compressCompletedHandle)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
+- (void)stopCompress {
+    [_exportSession cancelExport];
+    [_progressTimer invalidate];
+    _progressTimer = nil;
+}
+
+- (void)saveToAlbum {
+    [[self __compressFilePath] cySaveToAlbum];
 }
 
 @end

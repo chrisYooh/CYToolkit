@@ -23,6 +23,7 @@
 		F2A391822230BBF80036F827 /* CYVoiceCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391812230BBF80036F827 /* CYVoiceCompressor.m */; };
 		F2A391852230BC060036F827 /* CYVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391842230BC060036F827 /* CYVoicePlayer.m */; };
 		F2A3918A2230CF1D0036F827 /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */; };
+		F2A3918E223106120036F827 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2A3918D223106110036F827 /* libmp3lame.a */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -101,6 +102,8 @@
 		F2A391842230BC060036F827 /* CYVoicePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoicePlayer.m; sourceTree = "<group>"; };
 		F2A391882230CF1D0036F827 /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAVAssetExportSession.h; sourceTree = "<group>"; };
 		F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAVAssetExportSession.m; sourceTree = "<group>"; };
+		F2A3918C223106110036F827 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		F2A3918D223106110036F827 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28558D3AEAACEBCB537B812E /* libPods-CYToolkit.a in Frameworks */,
+				F2A3918E223106120036F827 /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 			children = (
 				F2A391802230BBF80036F827 /* CYVoiceCompressor.h */,
 				F2A391812230BBF80036F827 /* CYVoiceCompressor.m */,
+				F2A3918B223105FF0036F827 /* Lame */,
 			);
 			path = Compress;
 			sourceTree = "<group>";
@@ -325,6 +330,15 @@
 				F2A391892230CF1D0036F827 /* SDAVAssetExportSession.m */,
 			);
 			path = SDAVAsset;
+			sourceTree = "<group>";
+		};
+		F2A3918B223105FF0036F827 /* Lame */ = {
+			isa = PBXGroup;
+			children = (
+				F2A3918C223106110036F827 /* lame.h */,
+				F2A3918D223106110036F827 /* libmp3lame.a */,
+			);
+			path = Lame;
 			sourceTree = "<group>";
 		};
 		F2E46DA8216AECBC0066A068 = {
@@ -910,11 +924,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67KFM65GB3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CYToolkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Classes/Tools/Voice/Compress/Lame",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -929,11 +948,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67KFM65GB3;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CYToolkit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Classes/Tools/Voice/Compress/Lame",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

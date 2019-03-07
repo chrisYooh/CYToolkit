@@ -20,6 +20,11 @@
 
 @implementation CYVideoPlayer
 
+- (void)dealloc {
+    [self removeNotifications];
+    [self removePlayerObserver];
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -28,71 +33,6 @@
     }
     
     return self;
-}
-
-- (void)dealloc {
-    [self removeNotifications];
-    [self removePlayerObserver];
-}
-
-#pragma makr - Runtime play info
-
-- (NSTimeInterval)curVideoDuration {
-    return CMTimeGetSeconds(_playerItem.duration);
-}
-
-- (NSTimeInterval)curLoadingSec {
-    NSArray *loadedTimeRanges = [_playerItem loadedTimeRanges];
-    CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue]; // 获取缓冲区域
-    float startSeconds = CMTimeGetSeconds(timeRange.start);
-    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
-    NSTimeInterval result = startSeconds + durationSeconds; // 计算缓冲总进度
-    return result;
-}
-
-- (NSTimeInterval)curPlaySec {
-    return CMTimeGetSeconds(_playerItem.currentTime);
-}
-
-#pragma mark -
-
-- (void)loadVideoUrl:(NSURL *)videoUrl {
-    [self __prepareWithDataUrl:videoUrl];
-    [self removeNotifications];
-    [self addNotifications];
-}
-
-- (void)loadVideoFile:(NSString *)videoFilePath {
-    NSURL *fileUrl = [NSURL fileURLWithPath:videoFilePath];
-    [self __prepareWithDataUrl:fileUrl];
-    [self removeNotifications];
-    [self addNotifications];
-}
-
-- (void)play {
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [_player play];
-    _isPlaying = YES;
-}
-
-- (void)pause {
-    [_player pause];
-    _isPlaying = NO;
-}
-
-- (void)stop {
-    [_player pause];
-    _isPlaying = NO;
-    [_player seekToTime:CMTimeMake(0, 1)];
-}
-
-- (void)setPlayOffset:(NSTimeInterval)playOffset {
-    
-    [_player seekToTime:CMTimeMakeWithSeconds(playOffset, 30)
-        toleranceBefore:CMTimeMake(1, 30)
-         toleranceAfter:CMTimeMake(1, 30)
-      completionHandler:^(BOOL finished) {
-      }];
 }
 
 #pragma mark - Notification
@@ -158,7 +98,7 @@
     }
 }
 
-#pragma makr - MISC
+#pragma mark - MISC
 
 - (void)__prepareWithDataUrl:(NSURL *)dataUrl {
 
@@ -168,6 +108,66 @@
     _playerItem = _player.currentItem;
     [self removePlayerObserver];
     [self addPlayerObserver];
+}
+
+#pragma mark - Runtime info
+
+- (NSTimeInterval)curVideoDuration {
+    return CMTimeGetSeconds(_playerItem.duration);
+}
+
+- (NSTimeInterval)curLoadingSec {
+    NSArray *loadedTimeRanges = [_playerItem loadedTimeRanges];
+    CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue]; // 获取缓冲区域
+    float startSeconds = CMTimeGetSeconds(timeRange.start);
+    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval result = startSeconds + durationSeconds; // 计算缓冲总进度
+    return result;
+}
+
+- (NSTimeInterval)curPlaySec {
+    return CMTimeGetSeconds(_playerItem.currentTime);
+}
+
+#pragma mark - User Interface
+
+- (void)loadVideoUrl:(NSURL *)videoUrl {
+    [self __prepareWithDataUrl:videoUrl];
+    [self removeNotifications];
+    [self addNotifications];
+}
+
+- (void)loadVideoFile:(NSString *)videoFilePath {
+    NSURL *fileUrl = [NSURL fileURLWithPath:videoFilePath];
+    [self __prepareWithDataUrl:fileUrl];
+    [self removeNotifications];
+    [self addNotifications];
+}
+
+- (void)play {
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [_player play];
+    _isPlaying = YES;
+}
+
+- (void)pause {
+    [_player pause];
+    _isPlaying = NO;
+}
+
+- (void)stop {
+    [_player pause];
+    _isPlaying = NO;
+    [_player seekToTime:CMTimeMake(0, 1)];
+}
+
+- (void)setPlayOffset:(NSTimeInterval)playOffset {
+    
+    [_player seekToTime:CMTimeMakeWithSeconds(playOffset, 30)
+        toleranceBefore:CMTimeMake(1, 30)
+         toleranceAfter:CMTimeMake(1, 30)
+      completionHandler:^(BOOL finished) {
+      }];
 }
 
 @end

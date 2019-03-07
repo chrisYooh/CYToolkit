@@ -30,8 +30,8 @@
 @property (nonatomic, strong) AVCaptureSessionPreset confPreset;    /* 分辨率设置, 默认：AVCaptureSessionPresetHigh */
 
 /* Status */
-@property (nonatomic, assign, readonly) BOOL isRecording;   /* 是否在录制 */
-@property (nonatomic, assign, readonly) float curRecordSec; /* 当前录制秒数 */
+@property (nonatomic, assign, readonly) BOOL isRecording;           /* 是否在录制 */
+@property (nonatomic, assign, readonly) float curRecordSec;         /* 当前录制秒数 */
 
 /* Layer */
 @property (nonatomic, strong, readonly) AVCaptureVideoPreviewLayer *previewlayer;     /* 预览图层 */

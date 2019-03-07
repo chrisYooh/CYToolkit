@@ -43,140 +43,6 @@ AVCaptureFileOutputRecordingDelegate>
     return self;
 }
 
-#pragma mark - Config
-
-- (void)setConfFlashOn:(BOOL)confFlashOn {
-    
-    if (_confFlashOn == confFlashOn) {
-        return;
-    }
-    
-    AVCaptureDevice *tmpDevice = [self __backCamera];
-    
-    if (YES == confFlashOn) {
-        
-        if (NO == [tmpDevice hasTorch]) {
-            return;
-        }
-        
-        if (NO == [tmpDevice lockForConfiguration:nil]) {
-            return;
-        }
-        
-        [tmpDevice setTorchMode:AVCaptureTorchModeOn];
-        [tmpDevice unlockForConfiguration];
-        
-    } else {
-        
-        if (NO == [tmpDevice lockForConfiguration:nil]) {
-            return;
-        }
-        
-        [tmpDevice setTorchMode:AVCaptureTorchModeOff];
-        [tmpDevice unlockForConfiguration];
-    }
-    
-    _confFlashOn = confFlashOn;
-}
-
-- (void)setConfFrontCamera:(BOOL)confFrontCamera {
-    
-    if (_confFrontCamera == confFrontCamera) {
-        return;
-    }
-    
-    [self.avSession stopRunning];
-    
-    /* 选择新摄像头 */
-    AVCaptureDevice *tmpDevice = (YES == confFrontCamera) ? [self __frontCamera] : [self __backCamera];
-    
-    /* 构造新设备输入 */
-    AVCaptureDeviceInput *newDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:tmpDevice error:nil];
-    
-    /* 替换设备输入 */
-    [self.avSession beginConfiguration];
-    {
-        [self.avSession removeInput:self.cameraInput];
-        if ([self.avSession canAddInput:newDeviceInput]) {
-            [self.avSession addInput:newDeviceInput];
-            self.cameraInput = newDeviceInput;
-        }
-    }
-    [self.avSession commitConfiguration];
-    
-    /* 重启视频流 */
-    [self.avSession startRunning];
-    [self.previewlayer addAnimation:[self __cameraChangeAnimation] forKey:nil];
-    
-    /* 更新配置 */
-    _confFrontCamera = confFrontCamera;
-}
-
-#pragma mark - Status
-
-- (float)curRecordSec {
-    CMTime curDuration = _fileOutput.recordedDuration;
-    float sec = CMTimeGetSeconds(curDuration);
-    return sec;
-}
-
-#pragma mark - AV Related
-
-- (void)startSession {
-    [self.avSession startRunning];
-}
-
-- (void)stopSession {
-    [self.avSession stopRunning];
-}
-
-- (void)startRecord {
-    /* Set audio session */
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    
-    /* Start record */
-    [_fileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:[self __recordPath]] recordingDelegate:self];
-    
-    /* set status */
-    _isRecording = YES;
-}
-
-- (void)stopRecord {
-    [_fileOutput stopRecording];
-    
-    /* set status */
-    _isRecording = NO;
-}
-
-- (void)forcusOnView:(UIView *)view withPoint:(CGPoint)point {
-    
-    AVCaptureDevice *captureDevice= [self.cameraInput device];
-    NSError *error = nil;
-    if (NO == [captureDevice lockForConfiguration:&error]) {
-        NSLog(@"Set device property failed, error: %@",error.localizedDescription);
-        return;
-    }
-    
-    if ([captureDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
-        [captureDevice setFocusMode:AVCaptureFocusModeAutoFocus];
-    }
-    if ([captureDevice isFocusPointOfInterestSupported]) {
-        [captureDevice setFocusPointOfInterest:point];
-    }
-    if ([captureDevice isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
-        [captureDevice setExposureMode:AVCaptureExposureModeAutoExpose];
-    }
-    if ([captureDevice isExposurePointOfInterestSupported]) {
-        [captureDevice setExposurePointOfInterest:point];
-    }
-    [captureDevice unlockForConfiguration];
-    
-}
-
-- (void)saveToAlbum {
-    [[self __recordPath] cySaveToAlbum];
-}
-
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
 - (void)captureOutput:(AVCaptureOutput *)output
@@ -224,7 +90,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
-#pragma mark - Lazy Getter
+#pragma mark - AV Lazy Getter
 
 - (AVCaptureVideoPreviewLayer *)previewlayer {
     if (nil == _previewlayer) {
@@ -398,7 +264,85 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return _fileOutput;
 }
 
-#pragma mark - AV Camera Position
+
+#pragma mark - Config
+
+- (void)setConfFlashOn:(BOOL)confFlashOn {
+    
+    if (_confFlashOn == confFlashOn) {
+        return;
+    }
+    
+    AVCaptureDevice *tmpDevice = [self __backCamera];
+    
+    if (YES == confFlashOn) {
+        
+        if (NO == [tmpDevice hasTorch]) {
+            return;
+        }
+        
+        if (NO == [tmpDevice lockForConfiguration:nil]) {
+            return;
+        }
+        
+        [tmpDevice setTorchMode:AVCaptureTorchModeOn];
+        [tmpDevice unlockForConfiguration];
+        
+    } else {
+        
+        if (NO == [tmpDevice lockForConfiguration:nil]) {
+            return;
+        }
+        
+        [tmpDevice setTorchMode:AVCaptureTorchModeOff];
+        [tmpDevice unlockForConfiguration];
+    }
+    
+    _confFlashOn = confFlashOn;
+}
+
+- (void)setConfFrontCamera:(BOOL)confFrontCamera {
+    
+    if (_confFrontCamera == confFrontCamera) {
+        return;
+    }
+    
+    [self.avSession stopRunning];
+    
+    /* 选择新摄像头 */
+    AVCaptureDevice *tmpDevice = (YES == confFrontCamera) ? [self __frontCamera] : [self __backCamera];
+    
+    /* 构造新设备输入 */
+    AVCaptureDeviceInput *newDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:tmpDevice error:nil];
+    
+    /* 替换设备输入 */
+    [self.avSession beginConfiguration];
+    {
+        [self.avSession removeInput:self.cameraInput];
+        if ([self.avSession canAddInput:newDeviceInput]) {
+            [self.avSession addInput:newDeviceInput];
+            self.cameraInput = newDeviceInput;
+        }
+    }
+    [self.avSession commitConfiguration];
+    
+    /* 重启视频流 */
+    [self.avSession startRunning];
+    [self.previewlayer addAnimation:[self __cameraChangeAnimation] forKey:nil];
+    
+    /* 更新配置 */
+    _confFrontCamera = confFrontCamera;
+}
+
+#pragma mark - Status
+
+- (float)curRecordSec {
+    CMTime curDuration = _fileOutput.recordedDuration;
+    float sec = CMTimeGetSeconds(curDuration);
+    return sec;
+}
+
+#pragma mark - MISC
 
 - (AVCaptureDevice *)__frontCamera {
     NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -420,8 +364,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return nil;
 }
 
-#pragma mark - MISC
-
 - (CAAnimation *)__cameraChangeAnimation {
     CATransition *animation = [CATransition animation];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -435,6 +377,63 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     NSString *tmpPath = [NSString cyTemporaryPath];
     tmpPath = [tmpPath stringByAppendingPathComponent:__RecordFileName];
     return tmpPath;
+}
+
+#pragma mark - User Interface
+
+- (void)startSession {
+    [self.avSession startRunning];
+}
+
+- (void)stopSession {
+    [self.avSession stopRunning];
+}
+
+- (void)startRecord {
+    /* Set audio session */
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    /* Start record */
+    [_fileOutput startRecordingToOutputFileURL:[NSURL fileURLWithPath:[self __recordPath]] recordingDelegate:self];
+    
+    /* set status */
+    _isRecording = YES;
+}
+
+- (void)stopRecord {
+    [_fileOutput stopRecording];
+    
+    /* set status */
+    _isRecording = NO;
+}
+
+- (void)forcusOnView:(UIView *)view withPoint:(CGPoint)point {
+    
+    AVCaptureDevice *captureDevice= [self.cameraInput device];
+    NSError *error = nil;
+    if (NO == [captureDevice lockForConfiguration:&error]) {
+        NSLog(@"Set device property failed, error: %@",error.localizedDescription);
+        return;
+    }
+    
+    if ([captureDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        [captureDevice setFocusMode:AVCaptureFocusModeAutoFocus];
+    }
+    if ([captureDevice isFocusPointOfInterestSupported]) {
+        [captureDevice setFocusPointOfInterest:point];
+    }
+    if ([captureDevice isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+        [captureDevice setExposureMode:AVCaptureExposureModeAutoExpose];
+    }
+    if ([captureDevice isExposurePointOfInterestSupported]) {
+        [captureDevice setExposurePointOfInterest:point];
+    }
+    [captureDevice unlockForConfiguration];
+    
+}
+
+- (void)saveToAlbum {
+    [[self __recordPath] cySaveToAlbum];
 }
 
 @end

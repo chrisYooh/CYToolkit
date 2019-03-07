@@ -10,7 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class CYVoiceCompressor;
+
+@protocol CYVoiceCompressorDelegate <NSObject>
+
+- (void)compressor:(CYVoiceCompressor *)compressor didFinishCompressToFile:(NSString *)compressFile;
+- (void)compressor:(CYVoiceCompressor *)compressor failedWithError:(NSError *)error;
+
+@end
+
 @interface CYVoiceCompressor : NSObject
+
+@property (nonatomic, weak) id<CYVoiceCompressorDelegate> delegate;
+
+- (void)compressPcmFileToMp3:(NSString *)srcFilePath;    
 
 @end
 
