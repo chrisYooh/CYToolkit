@@ -32,14 +32,18 @@
     return self;
 }
 
-- (void)compressFile:(NSString *)srcFilePath {
-    
+#pragma mark -
+
+- (void)loadFile:(NSString *)srcFilePath {
     if (NO == [[NSFileManager defaultManager] fileExistsAtPath:srcFilePath]) {
         NSLog(@"未找到待压缩文件.\n");
         return;
     }
-
+    
     [self __prepareWithSrcFile:srcFilePath dstFile:[self __compressFilePath]];
+}
+
+- (void)startCompress {
     
     cyWeakSelf(weakSelf);
     [_exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
@@ -56,6 +60,18 @@
                                                     userInfo:nil
                                                      repeats:YES];
 }
+
+- (void)stopCompress {
+    [_exportSession cancelExport];
+    [_progressTimer invalidate];
+    _progressTimer = nil;
+}
+
+- (void)saveToAlbum {
+    [[self __compressFilePath] cySaveToAlbum];
+}
+
+#pragma mark -
 
 - (void)compressCompletedHandle {
     

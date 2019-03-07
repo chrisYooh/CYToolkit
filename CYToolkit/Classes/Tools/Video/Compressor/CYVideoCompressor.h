@@ -27,8 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<CYVideoCompressorDelegate> delegate;
 @property (nonatomic, assign) CGSize confOutputSize;                    /* 输出视频大小 */
 
-- (void)compressFile:(NSString *)srcFilePath;
+- (void)loadFile:(NSString *)srcFilePath;   /* 加载待压缩文件 */
+- (void)startCompress;                      /* 开始压缩 */
+- (void)stopCompress;                       /* 停止压缩 */
 
+- (void)saveToAlbum;                        /* 将最近完成的压缩存入相册 */
 @end
 
 NS_ASSUME_NONNULL_END

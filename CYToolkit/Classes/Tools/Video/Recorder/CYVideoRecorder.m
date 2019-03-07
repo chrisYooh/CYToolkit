@@ -173,6 +173,10 @@ AVCaptureFileOutputRecordingDelegate>
     
 }
 
+- (void)saveToAlbum {
+    [[self __recordPath] cySaveToAlbum];
+}
+
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
 - (void)captureOutput:(AVCaptureOutput *)output
