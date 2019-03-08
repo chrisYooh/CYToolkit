@@ -85,7 +85,7 @@ CYVideoPlayerDelegate>
 
 - (IBAction)recordToAlbum:(id)sender {
     NSLog(@"录制视频存相册");
-    [_recordFilePath cySaveToAlbum];
+    [_recordFilePath cyVideoSaveToAlbum];
 }
 
 - (IBAction)compressLoad:(id)sender {
@@ -109,7 +109,7 @@ CYVideoPlayerDelegate>
 
 - (IBAction)compressToAlbum:(id)sender {
     NSLog(@"压缩视频存相册");
-    [_compressor saveToAlbum];
+    [_compressFilePath cyVideoSaveToAlbum];
 }
 
 - (IBAction)doPlay:(id)sender {

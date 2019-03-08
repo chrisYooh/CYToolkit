@@ -125,7 +125,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* 将媒体文件存入相册
 * 字符串本身为文件路径 */
-- (void)cySaveToAlbum;
+- (void)cyVideoSaveToAlbum;
 
 /* 常用路径 */
 + (NSString *)cyMainBundlePath;

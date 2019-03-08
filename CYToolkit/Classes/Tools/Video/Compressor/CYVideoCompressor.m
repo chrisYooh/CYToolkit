@@ -204,7 +204,7 @@
 }
 
 - (void)saveToAlbum {
-    [[self __compressFilePath] cySaveToAlbum];
+    [[self __compressFilePath] cyVideoSaveToAlbum];
 }
 
 @end

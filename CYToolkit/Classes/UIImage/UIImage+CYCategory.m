@@ -6,6 +6,8 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
+#import <AssetsLibrary/AssetsLibrary.h>
+
 #import "UIImage+CYCategory.h"
 
 @implementation UIImage (CYCategory)
@@ -92,6 +94,22 @@
     
     /* 返回新图 */
     return upImage;
+}
+
+- (void)cySaveToAlbum {
+    
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    
+    [library
+     writeImageToSavedPhotosAlbum:[self CGImage]
+     orientation:(ALAssetOrientation)self.imageOrientation
+     completionBlock:^(NSURL *assetURL, NSError *error) {
+         if (error) {
+             NSLog(@"图片保存相册失败");
+         } else {
+             NSLog(@"图片保存相册成功");
+         }
+     }];
 }
 
 #pragma mark - MISC

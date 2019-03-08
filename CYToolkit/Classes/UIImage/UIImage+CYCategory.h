@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIImage *)cyUpOrientationImage;
 
+/** 将图片存入相册 */
+- (void)cySaveToAlbum;
+
 @end
 
 NS_ASSUME_NONNULL_END

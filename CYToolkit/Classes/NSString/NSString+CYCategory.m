@@ -321,7 +321,7 @@
     return fileSizeStr;
 }
 
-- (void)cySaveToAlbum {
+- (void)cyVideoSaveToAlbum {
     
     if (NO == [[NSFileManager defaultManager] fileExistsAtPath:self]) {
         NSLog(@"目标文件不存在");
@@ -330,6 +330,10 @@
     
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     NSURL *fileUrl = [NSURL fileURLWithPath:self];
+    
+    if (NO == [assetsLibrary videoAtPathIsCompatibleWithSavedPhotosAlbum:fileUrl]) {
+        NSLog(@"该文件无法被写入相册");
+    }
     
     [assetsLibrary writeVideoAtPathToSavedPhotosAlbum: fileUrl
                                       completionBlock:^(NSURL *assetURL, NSError *error) {

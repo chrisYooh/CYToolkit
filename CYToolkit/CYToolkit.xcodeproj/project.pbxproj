@@ -27,6 +27,7 @@
 		F2A3919A223112530036F827 /* CYVoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A39198223112530036F827 /* CYVoiceTestViewController.xib */; };
 		F2A3919F2231127B0036F827 /* CYVideoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A3919D2231127B0036F827 /* CYVideoTestViewController.m */; };
 		F2A391A02231127B0036F827 /* CYVideoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A3919E2231127B0036F827 /* CYVideoTestViewController.xib */; };
+		F2A391B322323AE00036F827 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A391B222323AE00036F827 /* test.png */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -112,6 +113,7 @@
 		F2A3919C2231127B0036F827 /* CYVideoTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideoTestViewController.h; sourceTree = "<group>"; };
 		F2A3919D2231127B0036F827 /* CYVideoTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideoTestViewController.m; sourceTree = "<group>"; };
 		F2A3919E2231127B0036F827 /* CYVideoTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CYVideoTestViewController.xib; sourceTree = "<group>"; };
+		F2A391B222323AE00036F827 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 		F2E46DA8216AECBC0066A068 = {
 			isa = PBXGroup;
 			children = (
+				F2A391B222323AE00036F827 /* test.png */,
 				F2E46DE6216AF4A40066A068 /* Classes */,
 				F2E46DB3216AECBC0066A068 /* CYToolkit */,
 				F2E46DCC216AECBD0066A068 /* CYToolkitTests */,
@@ -715,6 +718,7 @@
 				F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */,
 				F2A3919A223112530036F827 /* CYVoiceTestViewController.xib in Resources */,
 				F2A391A02231127B0036F827 /* CYVideoTestViewController.xib in Resources */,
+				F2A391B322323AE00036F827 /* test.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
