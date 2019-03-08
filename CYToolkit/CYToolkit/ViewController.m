@@ -7,8 +7,6 @@
 //
 
 #import "CYVideoToolTestViewController.h"
-#import "CYVideoTestViewController.h"   /* 其实是Voice，代码填反了 */
-#import "CYVoiceTestViewController.h"   /* 其实是Video，代码填反了 */
 
 #import "ViewController.h"
 
@@ -29,7 +27,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    CYVoiceTestViewController *tmpVc = [[CYVoiceTestViewController alloc] init];
+    CYVideoToolTestViewController *tmpVc = [[CYVideoToolTestViewController alloc] init];
     [self.navigationController pushViewController:tmpVc animated:YES];
 }
 
