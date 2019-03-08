@@ -9,9 +9,6 @@
 #import "CYToolkit.h"
 #import "CYAvTools.h"
 
-#import "LYVideoCompresser.h"
-#import "LYVideoRecorder.h"
-
 #import "CYVoiceTestViewController.h"
 
 @interface CYVoiceTestViewController ()
@@ -27,9 +24,6 @@ CYVideoPlayerDelegate>
 @property (nonatomic, strong) CYVideoCompressor *compressor;
 @property (nonatomic, strong) CYVideoPlayer *player;
 
-@property (nonatomic, strong) LYVideoRecorder *lyRecorder;
-@property (nonatomic, strong) LYVideoCompresser *lyCompressor;
-
 @property (nonatomic, strong) NSString *recordFilePath;
 @property (nonatomic, strong) NSString *compressFilePath;
 
@@ -40,23 +34,23 @@ CYVideoPlayerDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _recorder = [[CYVideoRecorder alloc] init];
-//    _recorder.delegate = self;
-//
-//    _compressor = [[CYVideoCompressor alloc] init];
-//    _compressor.delegate = self;
+    _recorder = [[CYVideoRecorder alloc] init];
+    _recorder.delegate = self;
+
+    _compressor = [[CYVideoCompressor alloc] init];
+    _compressor.delegate = self;
 
     _player = [[CYVideoPlayer alloc] init];
     _player.delegate = self;
     
     NSString *tmpPath = [NSString cyTemporaryPath];
-    _recordFilePath = [tmpPath stringByAppendingPathComponent:@"__testVideoRecordFile"];
-//    _recordFilePath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"MOV"];
-    _compressFilePath = [tmpPath stringByAppendingPathComponent:@"__testVideoCompressFile"];
+    _recordFilePath = [tmpPath stringByAppendingPathComponent:@"__testVideoRecordFile.mp4"];
+    _compressFilePath = [tmpPath stringByAppendingPathComponent:@"__testVideoCompressFile.mp4"];
     
-    
-//    [_recordScreen.layer insertSublayer:_recorder.previewlayer atIndex:0];
-//    [_recorder.previewlayer setFrame:_recordScreen.bounds];
+    [_recordScreen setContentMode:UIViewContentModeScaleAspectFit];
+    [_recordScreen.layer insertSublayer:_recorder.previewlayer atIndex:0];
+    [_recorder.previewlayer setFrame:_recordScreen.bounds];
+    [_playScreen setContentMode:UIViewContentModeScaleAspectFit];
     [_playScreen.layer insertSublayer:_player.previewLayer atIndex:0];
     [_player.previewLayer setFrame:_playScreen.bounds];
 }
@@ -65,35 +59,19 @@ CYVideoPlayerDelegate>
     [super viewDidAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
-//    [_recorder startSession];
-
-//    [[NSFileManager defaultManager] removeItemAtPath:_recordFilePath error:nil];
-//    _lyRecorder =
-//    [LYVideoRecorder
-//     recorderWithSavedPath:_recordFilePath
-//     captureScreen:_recordScreen
-//     forcutCursor:nil
-//     callback:^(float recordTime, float curPower) {
-//         NSLog(@"REcord %.2f", recordTime);
-//     } fileCompleteCallback:^{
-//         NSLog(@"Finish");
-//     }];
-//
-//    [_lyRecorder startCapture];
+    [_recorder startSession];
 }
 
 #pragma mark -
 
 - (IBAction)doRecord:(id)sender {
     NSLog(@"开始录制");
-//    [_recorder startRecord];
-    [_lyRecorder startRecord];
+    [_recorder startRecord];
 }
 
 - (IBAction)finishRecord:(id)sender {
     NSLog(@"完成录制");
-//    [_recorder stopRecord];
-    [_lyRecorder stopRecord];
+    [_recorder stopRecord];
 }
 
 - (IBAction)loadRecord:(id)sender {
@@ -117,17 +95,7 @@ CYVideoPlayerDelegate>
 
 - (IBAction)doCompress:(id)sender {
     NSLog(@"开始压缩");
-//    [_compressor startCompress];
-    
-    _lyCompressor =
-    [LYVideoCompresser
-     compresserWithSourcePath:_recordFilePath
-     compressPath:_compressFilePath
-     progressCallback:^(float progress) {
-         NSLog(@"%.2f", progress);
-     } finishCallback:^(BOOL complete) {
-         NSLog(@"%d", complete);
-     }];
+    [_compressor startCompress];
 }
 
 - (IBAction)loadCompress:(id)sender {
@@ -172,8 +140,8 @@ CYVideoPlayerDelegate>
     NSLog(@"录相已拷贝: %@", _recordFilePath);
 }
 
-- (void)recorder:(CYVideoRecorder *)recorder getSampleBuffer:(CMSampleBufferRef)bufferRef {
-    NSLog(@"处理单帧");
+- (void)recorder:(CYVideoRecorder *)recorder updateRecSec:(NSTimeInterval)recSec {
+    NSLog(@"录制时间 %.2f", recSec);
 }
 
 #pragma mark - CYVideoCompressorDelegate

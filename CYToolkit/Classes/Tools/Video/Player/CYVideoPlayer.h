@@ -33,8 +33,8 @@
 /* Layer */
 @property (nonatomic, strong) AVPlayerLayer *previewLayer;                      /* 播放层 */
 
-- (void)loadVideoUrl:(NSURL *)videoUrl;                 /* 加载网络视频 */
-- (void)loadVideoFile:(NSString *)videoFilePath;        /* 加载视频文件 */
+//- (void)loadVideoUrl:(NSURL *)videoUrl;                 /* 加载网络视频，暂未测试 */
+- (void)loadVideoFile:(NSString *)videoFilePath;        /* 加载视频文件, 需要指明文件后缀 */
 
 - (void)play;                                           /* 播放/继续 */
 - (void)pause;                                          /* 暂停 */

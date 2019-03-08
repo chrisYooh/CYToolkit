@@ -15,7 +15,7 @@
 
 - (void)recorderDidStartRecord:(CYVideoRecorder *)recorder;
 - (void)recorder:(CYVideoRecorder *)recorder didFinishRecordToFile:(NSString *)filePath;
-- (void)recorder:(CYVideoRecorder *)recorder getSampleBuffer:(CMSampleBufferRef)bufferRef;
+- (void)recorder:(CYVideoRecorder *)recorder updateRecSec:(NSTimeInterval)recSec;
 
 @end
 

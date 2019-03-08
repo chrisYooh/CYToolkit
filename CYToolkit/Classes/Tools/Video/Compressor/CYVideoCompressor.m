@@ -11,7 +11,7 @@
 
 #import "CYVideoCompressor.h"
 
-#define __CompressFileName            @"cyToolkitVideoCompressTmpFile"
+#define __CompressFileName            @"cyToolkitVideoCompressTmpFile.mp4"
 
 
 @interface CYVideoCompressor ()
@@ -110,37 +110,13 @@
 /* Caculate the right rect of screen */
 - (CGRect)__clipRectFromVideoSize:(AVAsset *)asset {
     
+    /* 不剪裁 */
     AVAssetTrack *videoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
     CGSize pixelSize = videoTrack.naturalSize;
     CGRect retRect = CGRectZero;
     
-    /* Current screen size is 626 x 640 */
-    CGSize videoScreenSize = _confOutputSize;
-    videoScreenSize.width = (0 == videoScreenSize.width) ? pixelSize.width : videoScreenSize.width;
-    videoScreenSize.height = (0 == videoScreenSize.height) ? pixelSize.height : videoScreenSize.height;
-    
     retRect.size.width = pixelSize.height;
     retRect.size.height = pixelSize.width;
-    
-    /* pixelSize.height / videoScreenSize.height > pixelSize.width / videoScreenSize.width */
-    if (retRect.size.height * videoScreenSize.width > retRect.size.width * videoScreenSize.height) {
-        /* Real size is too high */
-        CGFloat tmpHeight = retRect.size.width * videoScreenSize.height / videoScreenSize.width;
-        retRect.origin.y = (retRect.size.height - tmpHeight) / 2;
-        retRect.size.height = tmpHeight;
-    } else {
-        /* Real size is too wide */
-        CGFloat tmpWidth = retRect.size.height * videoScreenSize.width / videoScreenSize.height;
-        retRect.origin.x = (retRect.size.width - tmpWidth) / 2;
-        retRect.size.width = tmpWidth;
-    }
-    
-    retRect.size.width = (int)retRect.size.width;
-    retRect.size.height = (int)retRect.size.height;
-    
-    //    NSLog(@"Pixel size : %@", NSStringFromCGSize(pixelSize));
-    //    NSLog(@"Clip size : %@", NSStringFromCGRect(retRect));
-    
     return retRect;
 }
 

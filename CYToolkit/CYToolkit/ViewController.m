@@ -7,8 +7,8 @@
 //
 
 #import "CYVideoToolTestViewController.h"
-#import "CYVideoTestViewController.h"
-#import "CYVoiceTestViewController.h"
+#import "CYVideoTestViewController.h"   /* 其实是Voice，代码填反了 */
+#import "CYVoiceTestViewController.h"   /* 其实是Video，代码填反了 */
 
 #import "ViewController.h"
 

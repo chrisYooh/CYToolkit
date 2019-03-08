@@ -26,7 +26,7 @@
 
 @property (nonatomic, assign) CGSize confOutputSize;                    /* 输出视频大小 */
 
-- (void)loadFile:(NSString *)srcFilePath;   /* 加载待压缩文件 */
+- (void)loadFile:(NSString *)srcFilePath;   /* 加载待压缩文件, 需要指明文件后缀 */
 - (void)startCompress;                      /* 开始压缩 */
 - (void)stopCompress;                       /* 停止压缩 */
 

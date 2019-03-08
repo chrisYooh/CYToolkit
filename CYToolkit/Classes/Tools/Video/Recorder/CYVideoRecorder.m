@@ -12,11 +12,10 @@
 
 #import "CYVideoRecorder.h"
 
-#define __RecordFileName            @"cyToolkitVideoRecordTmpFile"
+#define __RecordFileName            @"cyToolkitVideoRecordTmpFile.mp4"
 
 @interface CYVideoRecorder ()
-<AVCaptureVideoDataOutputSampleBufferDelegate,
-AVCaptureFileOutputRecordingDelegate>
+<AVCaptureFileOutputRecordingDelegate>
 
 @property (nonatomic, assign, readwrite) BOOL isRecording;      /* 是否正在录制 */
 @property (nonatomic, strong, readwrite) AVCaptureVideoPreviewLayer *previewlayer;      /* 预览图层 */
@@ -24,9 +23,10 @@ AVCaptureFileOutputRecordingDelegate>
 @property (nonatomic, strong) AVCaptureSession *avSession;                              /* 流对象，依赖cameraInput, deviceOutput */
 @property (nonatomic, strong) AVCaptureDeviceInput *cameraInput;                        /* 摄像头视频 设备输入 */
 @property (nonatomic, retain) AVCaptureDeviceInput *voiceInput;                         /* 声音 设备输入 */
-@property (nonatomic, strong) AVCaptureVideoDataOutput *dataOutput;                     /* 数据输出，依赖videoQueue */
 @property (nonatomic, retain) AVCaptureMovieFileOutput *fileOutput;                     /* 文件输出，视频录制时候需要 */
 @property (nonatomic, strong) dispatch_queue_t videoQueue;                              /* 视频帧数据输出队列 */
+
+@property (nonatomic, retain) NSTimer *callbackTimer;
 
 @end
 
@@ -41,32 +41,6 @@ AVCaptureFileOutputRecordingDelegate>
     }
     
     return self;
-}
-
-#pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
-
-- (void)captureOutput:(AVCaptureOutput *)output
-didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection {
-    
-    if (connection != [self.dataOutput connectionWithMediaType:AVMediaTypeVideo]) {
-        return;
-    }
-    
-    /* 获得帧 */
-    cyWeakSelf(weakSelf);
-    @synchronized(self) {
-        
-        if ([weakSelf.delegate respondsToSelector:@selector(recorder:getSampleBuffer:)]) {
-            [weakSelf.delegate recorder:weakSelf getSampleBuffer:sampleBuffer];
-        }
-    }
-}
-
-- (void)captureOutput:(AVCaptureOutput *)output
-  didDropSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection {
-    /* 丢弃帧处理 */
 }
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
@@ -117,11 +91,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             [_avSession addInput:self.voiceInput];
         }
         
-        /* 添加输出（视频队列，文件输出） */
-        if ([_avSession canAddOutput:self.dataOutput]) {
-            [_avSession addOutput:self.dataOutput];
-        }
-        
+        /* 添加输出（文件输出） */
         if ([_avSession canAddOutput:self.fileOutput]) {
             [_avSession addOutput:self.fileOutput];
         }
@@ -227,20 +197,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return _voiceInput;
 }
 
-- (AVCaptureVideoDataOutput *)dataOutput {
-    
-    if (nil == _dataOutput) {
-        _dataOutput = [[AVCaptureVideoDataOutput alloc] init];
-        _dataOutput.alwaysDiscardsLateVideoFrames = YES;
-        [_dataOutput setSampleBufferDelegate:self queue:self.videoQueue];
-        
-        NSDictionary *videoSettingDic = @{ (id)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA) };
-        [_dataOutput setVideoSettings:videoSettingDic];
-    }
-    
-    return _dataOutput;
-}
-
 - (dispatch_queue_t)videoQueue {
     if (nil == _videoQueue) {
         _videoQueue = dispatch_queue_create("com.cmcamera.videoqueue", DISPATCH_QUEUE_SERIAL);
@@ -249,21 +205,20 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (AVCaptureMovieFileOutput *)fileOutput {
-    
+
     if (nil != _fileOutput) {
         return _fileOutput;
     }
-    
+
     _fileOutput = [[AVCaptureMovieFileOutput alloc] init];
     _fileOutput.movieFragmentInterval = kCMTimeInvalid;
     AVCaptureConnection *tmpConn = [_fileOutput connectionWithMediaType:AVMediaTypeVideo];
     if ([tmpConn isVideoStabilizationSupported]) {
         tmpConn.preferredVideoStabilizationMode = AVCaptureVideoStabilizationModeAuto;
     }
-    
+
     return _fileOutput;
 }
-
 
 #pragma mark - Config
 
@@ -379,6 +334,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return tmpPath;
 }
 
+- (void)__timerCallback {
+    if ([_delegate respondsToSelector:@selector(recorder:updateRecSec:)]) {
+        [_delegate recorder:self updateRecSec:[self curRecordSec]];
+    }
+}
+
 #pragma mark - User Interface
 
 - (void)startSession {
@@ -399,6 +360,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     /* set status */
     _isRecording = YES;
+    
+    /* Timer syn */
+    [_callbackTimer invalidate];
+    _callbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                      target:self
+                                                    selector:@selector(__timerCallback)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 - (void)stopRecord {
@@ -406,6 +375,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     /* set status */
     _isRecording = NO;
+    
+    /* Timer syn */
+    [_callbackTimer invalidate];
+    _callbackTimer = nil;
 }
 
 - (void)forcusOnView:(UIView *)view withPoint:(CGPoint)point {

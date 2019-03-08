@@ -27,7 +27,7 @@
 @property (nonatomic, assign, readonly) float curPower;                         /* 当前音量 */
 @property (nonatomic, assign, readonly) BOOL isPlaying;                         /* 是否正在播放 */
 
-- (void)loadAudioUrl:(NSURL *)audioUrl;                 /* 加载网络音频 */
+//- (void)loadAudioUrl:(NSURL *)audioUrl;                 /* 加载网络音频，暂未测试 */
 - (void)loadAudioFile:(NSString *)audioFilePath;        /* 加载音频文件 */
 
 - (void)play;                                           /* 播放/继续 */
