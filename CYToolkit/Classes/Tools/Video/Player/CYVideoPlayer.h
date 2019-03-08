@@ -30,6 +30,9 @@
 @property (nonatomic, assign, readonly) NSTimeInterval curPlaySec;              /* 当前播放时长 */
 @property (nonatomic, assign, readonly) BOOL isPlaying;                         /* 是否正在播放 */
 
+/* Layer */
+@property (nonatomic, strong) AVPlayerLayer *previewLayer;                      /* 播放层 */
+
 - (void)loadVideoUrl:(NSURL *)videoUrl;                 /* 加载网络视频 */
 - (void)loadVideoFile:(NSString *)videoFilePath;        /* 加载视频文件 */
 

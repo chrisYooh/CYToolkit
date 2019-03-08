@@ -28,6 +28,9 @@
 		F2A3919A223112530036F827 /* CYVoiceTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A39198223112530036F827 /* CYVoiceTestViewController.xib */; };
 		F2A3919F2231127B0036F827 /* CYVideoTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A3919D2231127B0036F827 /* CYVideoTestViewController.m */; };
 		F2A391A02231127B0036F827 /* CYVideoTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A3919E2231127B0036F827 /* CYVideoTestViewController.xib */; };
+		F2A391A92231FE0B0036F827 /* LYVideoCompresser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391A72231FE0B0036F827 /* LYVideoCompresser.m */; };
+		F2A391AF223202BE0036F827 /* LYVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A391AD223202BE0036F827 /* LYVideoRecorder.m */; };
+		F2A391B1223205220036F827 /* test.MOV in Resources */ = {isa = PBXBuildFile; fileRef = F2A391B0223205220036F827 /* test.MOV */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -115,6 +118,11 @@
 		F2A3919C2231127B0036F827 /* CYVideoTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideoTestViewController.h; sourceTree = "<group>"; };
 		F2A3919D2231127B0036F827 /* CYVideoTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideoTestViewController.m; sourceTree = "<group>"; };
 		F2A3919E2231127B0036F827 /* CYVideoTestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CYVideoTestViewController.xib; sourceTree = "<group>"; };
+		F2A391A72231FE0B0036F827 /* LYVideoCompresser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYVideoCompresser.m; sourceTree = "<group>"; };
+		F2A391A82231FE0B0036F827 /* LYVideoCompresser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYVideoCompresser.h; sourceTree = "<group>"; };
+		F2A391AD223202BE0036F827 /* LYVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYVideoRecorder.m; sourceTree = "<group>"; };
+		F2A391AE223202BE0036F827 /* LYVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYVideoRecorder.h; sourceTree = "<group>"; };
+		F2A391B0223205220036F827 /* test.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = test.MOV; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -356,6 +364,11 @@
 		F2A39190223111C10036F827 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				F2A391B0223205220036F827 /* test.MOV */,
+				F2A391AE223202BE0036F827 /* LYVideoRecorder.h */,
+				F2A391AD223202BE0036F827 /* LYVideoRecorder.m */,
+				F2A391A82231FE0B0036F827 /* LYVideoCompresser.h */,
+				F2A391A72231FE0B0036F827 /* LYVideoCompresser.m */,
 				F2A3919B2231125B0036F827 /* Video */,
 				F2A39195223112260036F827 /* Voice */,
 				F2A391942231121E0036F827 /* Camera */,
@@ -717,6 +730,7 @@
 			files = (
 				F2E46DC1216AECBD0066A068 /* LaunchScreen.storyboard in Resources */,
 				F2E46DBE216AECBD0066A068 /* Assets.xcassets in Resources */,
+				F2A391B1223205220036F827 /* test.MOV in Resources */,
 				F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */,
 				F2A3919A223112530036F827 /* CYVoiceTestViewController.xib in Resources */,
 				F2A391A02231127B0036F827 /* CYVideoTestViewController.xib in Resources */,
@@ -796,12 +810,14 @@
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
 				F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */,
+				F2A391AF223202BE0036F827 /* LYVideoRecorder.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
 				F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */,
 				F2E46E0D216AFAF90066A068 /* NSDecimalNumber+CYCategory.m in Sources */,
 				F2A3917C2230BBBC0036F827 /* CYVideoPlayer.m in Sources */,
 				F2E46E1F216AFFA10066A068 /* UIView+CYCategory.m in Sources */,
 				F2E46E22216B01170066A068 /* UIWebView+CYCategory.m in Sources */,
+				F2A391A92231FE0B0036F827 /* LYVideoCompresser.m in Sources */,
 				F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */,
 				F2E46DEF216AF6400066A068 /* UIDevice+CYCategory.m in Sources */,
 				F2E46DF8216AF7D10066A068 /* CLLocation+CYCategory.m in Sources */,

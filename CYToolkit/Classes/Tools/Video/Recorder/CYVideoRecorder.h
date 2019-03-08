@@ -11,7 +11,7 @@
 
 @class CYVideoRecorder;
 
-@protocol CYVideoToolDelegate <NSObject>
+@protocol CYVideoRecorderDelegate <NSObject>
 
 - (void)recorderDidStartRecord:(CYVideoRecorder *)recorder;
 - (void)recorder:(CYVideoRecorder *)recorder didFinishRecordToFile:(NSString *)filePath;
@@ -22,7 +22,7 @@
 @interface CYVideoRecorder : NSObject
 
 /* Delegate */
-@property (nonatomic, weak) id<CYVideoToolDelegate> delegate;
+@property (nonatomic, weak) id<CYVideoRecorderDelegate> delegate;
 
 /* Config */
 @property (nonatomic, assign) BOOL confFlashOn;                     /* 闪光灯是否开启，默认 NO */

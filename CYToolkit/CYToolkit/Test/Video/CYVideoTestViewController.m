@@ -60,9 +60,7 @@ CYVoicePlayerDelegate>
 
 - (IBAction)loadRecord:(id)sender {
     NSLog(@"加载录音");
-    //[_player loadAudioFile:_recordFilePath];
-    NSURL *tmpUrl = [NSURL URLWithString:@"https://github.com/chrisYooh/chrisLife/raw/master/18年12月%20唱歌比赛/可乐-杨一凡.mp3"];
-    [_player loadAudioUrl:tmpUrl];
+    [_player loadAudioFile:_recordFilePath];
 }
 
 - (IBAction)recordSize:(id)sender {
@@ -86,6 +84,15 @@ CYVoicePlayerDelegate>
 - (IBAction)doPlay:(id)sender {
     NSLog(@"播放");
     [_player play];
+    
+//    _lyPlayer =
+//    [LYVoicePlayer playerWithDataPath:_compressFilePath callback:^(NSTimeInterval playTime, float curPower) {
+//        NSLog(@"%.2lf, ", playTime);
+//    } finishCallback:^(BOOL complete) {
+//        NSLog(@"Finish");
+//    }];
+    
+//    [_lyPlayer play];
 }
 
 - (IBAction)doPause:(id)sender {

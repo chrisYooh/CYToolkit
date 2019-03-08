@@ -6,6 +6,8 @@
 //  Copyright © 2019 杨一凡. All rights reserved.
 //
 
+#import "CYCompatible.h"
+
 #import "CYVideoPlayer.h"
 
 @interface CYVideoPlayer ()
@@ -14,7 +16,9 @@
 
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerItem *playerItem;
-@property (nonatomic, strong) AVPlayerLayer *previewLayer;
+
+@property (nonatomic) BOOL onSettingOffset;
+@property (nonatomic, retain) NSTimer *callbackTimer;
 
 @end
 
@@ -30,6 +34,8 @@
     if (self) {
         _previewLayer = [[AVPlayerLayer alloc] init];
         [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+        
+//        [self addPlayerObserver];
     }
     
     return self;
@@ -106,8 +112,18 @@
     [_previewLayer setPlayer:_player];
     
     _playerItem = _player.currentItem;
-    [self removePlayerObserver];
+//    [self removePlayerObserver];
     [self addPlayerObserver];
+}
+
+- (void)__timerCallback {
+    if (YES == _onSettingOffset) {
+        return;
+    }
+        
+    if ([_delegate respondsToSelector:@selector(player:playSecUpdated:)]) {
+        [_delegate player:self playSecUpdated:[self curPlaySec]];
+    }
 }
 
 #pragma mark - Runtime info
@@ -148,25 +164,45 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [_player play];
     _isPlaying = YES;
+    
+    [_callbackTimer invalidate];
+    _callbackTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                      target:self
+                                                    selector:@selector(__timerCallback)
+                                                    userInfo:nil
+                                                     repeats:YES];
 }
 
 - (void)pause {
     [_player pause];
     _isPlaying = NO;
+    
+    [_callbackTimer invalidate];
+    _callbackTimer = nil;
 }
 
 - (void)stop {
     [_player pause];
     _isPlaying = NO;
     [_player seekToTime:CMTimeMake(0, 1)];
+    
+    [_callbackTimer invalidate];
+    _callbackTimer = nil;
 }
 
 - (void)setPlayOffset:(NSTimeInterval)playOffset {
     
+    cyWeakSelf(weakSelf);
+    _onSettingOffset = YES;
     [_player seekToTime:CMTimeMakeWithSeconds(playOffset, 30)
         toleranceBefore:CMTimeMake(1, 30)
          toleranceAfter:CMTimeMake(1, 30)
       completionHandler:^(BOOL finished) {
+          if (nil != weakSelf.callbackTimer) {
+              [weakSelf.player play];
+              weakSelf.isPlaying = YES;
+          }
+          weakSelf.onSettingOffset = NO;
       }];
 }
 

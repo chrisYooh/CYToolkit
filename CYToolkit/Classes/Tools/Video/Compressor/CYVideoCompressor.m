@@ -171,6 +171,12 @@
     return tmpPath;
 }
 
+- (void)__compressProgressHandle {
+    if ([_delegate respondsToSelector:@selector(compressor:reportProgress:)]) {
+        [_delegate compressor:self reportProgress:_exportSession.progress];
+    }
+}
+
 - (void)__compressCompletedHandle {
     
     if (AVAssetExportSessionStatusCompleted != _exportSession.status) {
@@ -203,16 +209,14 @@
     
     cyWeakSelf(weakSelf);
     [_exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
-        if ([weakSelf.delegate respondsToSelector:@selector(compressor:reportProgress:)]) {
-            [weakSelf.delegate compressor:weakSelf reportProgress:weakSelf.exportSession.progress];
-        }
+        [weakSelf __compressCompletedHandle];
     }];
     
     /* Timer syn */
     [_progressTimer invalidate];
     _progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                                       target:self
-                                                    selector:@selector(__compressCompletedHandle)
+                                                    selector:@selector(__compressProgressHandle)
                                                     userInfo:nil
                                                      repeats:YES];
 }

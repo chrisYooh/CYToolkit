@@ -8,6 +8,7 @@
 
 #import "CYVideoToolTestViewController.h"
 #import "CYVideoTestViewController.h"
+#import "CYVoiceTestViewController.h"
 
 #import "ViewController.h"
 
@@ -28,7 +29,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    CYVideoTestViewController *tmpVc = [[CYVideoTestViewController alloc] init];
+    CYVoiceTestViewController *tmpVc = [[CYVoiceTestViewController alloc] init];
     [self.navigationController pushViewController:tmpVc animated:YES];
 }
 
