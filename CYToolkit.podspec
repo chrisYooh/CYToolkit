@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CYToolkit"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "CYToolkit"
   s.description  = "Used for APP based support, Based on YYCategories（But no relay on）"
   s.homepage     = "https://github.com/chrisYooh/CYToolkit.git"
@@ -97,8 +97,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Tools' do |ss|
-    ss.source_files = "CYToolkit/Classes/Tools/*"
-    ss.public_header_files = "CYToolkit/Classes/Tools/*.h"
+    ss.source_files = "CYToolkit/Classes/Tools/**/*"
+    ss.public_header_files = "CYToolkit/Classes/Tools/**/*.h"
     ss.dependency "CYToolkit/Compatible"
     ss.dependency "CYToolkit/UIImage"
   end
