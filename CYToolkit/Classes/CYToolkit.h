@@ -17,6 +17,7 @@
 #import "NSDecimalNumber+CYCategory.h"
 #import "NSObject+CYCategory.h"
 #import "NSString+CYCategory.h"
+#import "NSString+CYTTS.h"
 #import "UIButton+CYCategory.h"
 #import "UIColor+CYCategory.h"
 #import "UIDevice+CYCategory.h"

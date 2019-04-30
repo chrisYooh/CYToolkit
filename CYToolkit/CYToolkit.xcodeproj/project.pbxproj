@@ -16,6 +16,9 @@
 		F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A38F5F222E583A0036F827 /* CYVideoTool.m */; };
 		F2A38F63222E61340036F827 /* CYVideoToolTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */; };
 		F2A391B322323AE00036F827 /* test.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A391B222323AE00036F827 /* test.png */; };
+		F2D294D22277ECF90057DC5F /* CYTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D294D12277ECF90057DC5F /* CYTTS.m */; };
+		F2D294D52277EE4C0057DC5F /* NSString+CYTTS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D294D42277EE4C0057DC5F /* NSString+CYTTS.m */; };
+		F2D294D82277EEAC0057DC5F /* CYASR.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D294D72277EEAC0057DC5F /* CYASR.m */; };
 		F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB5216AECBC0066A068 /* AppDelegate.m */; };
 		F2E46DB9216AECBC0066A068 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E46DB8216AECBC0066A068 /* ViewController.m */; };
 		F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E46DBA216AECBC0066A068 /* Main.storyboard */; };
@@ -79,6 +82,12 @@
 		F2A38F61222E61340036F827 /* CYVideoToolTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideoToolTestViewController.h; sourceTree = "<group>"; };
 		F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideoToolTestViewController.m; sourceTree = "<group>"; };
 		F2A391B222323AE00036F827 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		F2D294D02277ECF90057DC5F /* CYTTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYTTS.h; sourceTree = "<group>"; };
+		F2D294D12277ECF90057DC5F /* CYTTS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYTTS.m; sourceTree = "<group>"; };
+		F2D294D32277EE4C0057DC5F /* NSString+CYTTS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CYTTS.h"; sourceTree = "<group>"; };
+		F2D294D42277EE4C0057DC5F /* NSString+CYTTS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CYTTS.m"; sourceTree = "<group>"; };
+		F2D294D62277EEAC0057DC5F /* CYASR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYASR.h; sourceTree = "<group>"; };
+		F2D294D72277EEAC0057DC5F /* CYASR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYASR.m; sourceTree = "<group>"; };
 		F2E46DB1216AECBC0066A068 /* CYToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E46DB4216AECBC0066A068 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E46DB5216AECBC0066A068 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -205,8 +214,9 @@
 		F2A38F5D222E57F60036F827 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				F2A38F5E222E583A0036F827 /* CYVideoTool.h */,
-				F2A38F5F222E583A0036F827 /* CYVideoTool.m */,
+				F2D294CF2277ECCA0057DC5F /* VideoTool */,
+				F2D294CE2277EBFE0057DC5F /* TTS(Text To Speech) */,
+				F2D294CD2277EBD80057DC5F /* ASR(Automatic Speech Recognition) */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -226,6 +236,35 @@
 				F2A38F62222E61340036F827 /* CYVideoToolTestViewController.m */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		F2D294CD2277EBD80057DC5F /* ASR(Automatic Speech Recognition) */ = {
+			isa = PBXGroup;
+			children = (
+				F2D294D62277EEAC0057DC5F /* CYASR.h */,
+				F2D294D72277EEAC0057DC5F /* CYASR.m */,
+			);
+			path = "ASR(Automatic Speech Recognition)";
+			sourceTree = "<group>";
+		};
+		F2D294CE2277EBFE0057DC5F /* TTS(Text To Speech) */ = {
+			isa = PBXGroup;
+			children = (
+				F2D294D02277ECF90057DC5F /* CYTTS.h */,
+				F2D294D12277ECF90057DC5F /* CYTTS.m */,
+				F2D294D32277EE4C0057DC5F /* NSString+CYTTS.h */,
+				F2D294D42277EE4C0057DC5F /* NSString+CYTTS.m */,
+			);
+			path = "TTS(Text To Speech)";
+			sourceTree = "<group>";
+		};
+		F2D294CF2277ECCA0057DC5F /* VideoTool */ = {
+			isa = PBXGroup;
+			children = (
+				F2A38F5E222E583A0036F827 /* CYVideoTool.h */,
+				F2A38F5F222E583A0036F827 /* CYVideoTool.m */,
+			);
+			path = VideoTool;
 			sourceTree = "<group>";
 		};
 		F2E46DA8216AECBC0066A068 = {
@@ -606,7 +645,10 @@
 				F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */,
 				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
+				F2D294D22277ECF90057DC5F /* CYTTS.m in Sources */,
+				F2D294D82277EEAC0057DC5F /* CYASR.m in Sources */,
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
+				F2D294D52277EE4C0057DC5F /* NSString+CYTTS.m in Sources */,
 				F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */,
 				F206044C21C0A6040016DD66 /* CYToastView.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
