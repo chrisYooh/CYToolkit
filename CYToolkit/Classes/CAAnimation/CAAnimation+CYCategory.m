@@ -91,6 +91,40 @@
     return scaleAnimation;
 }
 
+#pragma mark - 图片链 转 CAAnimation 动画
+
++ (CAAnimation *)cyImgAnimationWithImageArray:(NSArray<UIImage *> *)imageArray duration:(float)duration {
+    
+    NSArray *valueArray = [self imageRefArrayFromUIImageArray:imageArray];
+    NSArray *frameDurationArray = [self frameDurationArrayFromUIImageArray:imageArray];
+    NSArray *keyTimeArray = [self keyTimesArrayFromFrameDurationArray:frameDurationArray];
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
+    [animation setDuration:duration];
+    [animation setValues:valueArray];
+    [animation setKeyTimes:keyTimeArray];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    return animation;
+}
+
++ (NSArray *)imageRefArrayFromUIImageArray:(NSArray<UIImage *> *)imageArray {
+    NSMutableArray *tmpMulArray = [[NSMutableArray alloc] init];
+    for (UIImage *tmpImage in imageArray) {
+        [tmpMulArray addObject:(__bridge id _Nonnull)(tmpImage.CGImage)];
+    }
+    return tmpMulArray.copy;
+}
+
++ (NSArray *)frameDurationArrayFromUIImageArray:(NSArray<UIImage *> *)imageArray {
+    
+    NSMutableArray *tmpTimeArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < imageArray.count; i++) {
+        [tmpTimeArray addObject:@(0.04)];
+    }
+    
+    return [NSArray arrayWithArray:tmpTimeArray];
+}
+
 #pragma mark - Gif转CAAnimation动画
 
 + (CAAnimation *)cyGifAnimationWithGifData:(NSData *)gifData duration:(float)duration {

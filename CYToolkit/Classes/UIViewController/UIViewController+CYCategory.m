@@ -39,4 +39,17 @@
     return curVc;
 }
 
+- (void)cyShowAlertController:(UIAlertController *)alertController {
+    
+    if ([alertController respondsToSelector:@selector(popoverPresentationController)]) {
+        alertController.popoverPresentationController.sourceView = self.view;
+        alertController.popoverPresentationController.sourceRect =
+        CGRectMake(0,
+                   [UIScreen mainScreen].bounds.size.height,
+                   [UIScreen mainScreen].bounds.size.width,
+                   [UIScreen mainScreen].bounds.size.height);
+    }
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 @end

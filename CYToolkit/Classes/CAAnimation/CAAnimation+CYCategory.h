@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,9 +38,13 @@ NS_ASSUME_NONNULL_BEGIN
                                      baseAngle:(float)baseAngle
                                    targetAngle:(float)targetAngle;
 
+/* 图片数组转动画 */
++ (CAAnimation *)cyImgAnimationWithImageArray:(NSArray<UIImage *> *)imageArray duration:(float)duration;
+
 /* Gif转动画
  * Tip：直接用UIWebView播放gif不方便控制gif的【播放次数】及【图片范围】 */
 + (CAAnimation *)cyGifAnimationWithGifData:(NSData *)gifData duration:(float)duration;
+
 
 /* 动画暂停 & 继续 */
 + (void)cyPauseAnimationWithLayer:(CALayer *)inputLayer;

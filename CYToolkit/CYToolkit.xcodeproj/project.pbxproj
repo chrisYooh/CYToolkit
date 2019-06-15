@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		28558D3AEAACEBCB537B812E /* libPods-CYToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */; };
+		83AFC78922B4D8AD007B266A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76C22B4D8AD007B266A /* 1.png */; };
+		83AFC78A22B4D8AD007B266A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76D22B4D8AD007B266A /* 2.png */; };
+		83AFC78B22B4D8AD007B266A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76E22B4D8AD007B266A /* 3.png */; };
+		83AFC78C22B4D8AD007B266A /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76F22B4D8AD007B266A /* 4.png */; };
+		83AFC78D22B4D8AD007B266A /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77022B4D8AD007B266A /* 5.png */; };
+		83AFC78E22B4D8AD007B266A /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77122B4D8AD007B266A /* 6.png */; };
+		83AFC78F22B4D8AD007B266A /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77222B4D8AD007B266A /* 7.png */; };
+		83AFC79022B4D8AD007B266A /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77322B4D8AD007B266A /* 8.png */; };
+		83AFC79122B4D8AD007B266A /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77422B4D8AD007B266A /* 9.png */; };
+		83AFC79222B4D8AD007B266A /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77522B4D8AD007B266A /* 10.png */; };
+		83AFC79322B4D8AD007B266A /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77622B4D8AD007B266A /* 11.png */; };
+		83AFC79522B4D8AD007B266A /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77822B4D8AD007B266A /* 12.png */; };
+		83AFC79622B4D8AD007B266A /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77922B4D8AD007B266A /* 13.png */; };
+		83AFC79722B4D8AD007B266A /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77A22B4D8AD007B266A /* 14.png */; };
+		83AFC79822B4D8AD007B266A /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77B22B4D8AD007B266A /* 15.png */; };
 		F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044021BFC5270016DD66 /* CYBigImageView.m */; };
 		F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044421C09C450016DD66 /* UIImageView+CYCategory.m */; };
 		F206044C21C0A6040016DD66 /* CYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044B21C0A6040016DD66 /* CYToastView.m */; };
@@ -65,6 +80,21 @@
 /* Begin PBXFileReference section */
 		0B49B4CFF47C7F854DFCB5C1 /* Pods-CYToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		501CF6E5202CBA7199034EE8 /* Pods-CYToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.release.xcconfig"; sourceTree = "<group>"; };
+		83AFC76C22B4D8AD007B266A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		83AFC76D22B4D8AD007B266A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		83AFC76E22B4D8AD007B266A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		83AFC76F22B4D8AD007B266A /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		83AFC77022B4D8AD007B266A /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		83AFC77122B4D8AD007B266A /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		83AFC77222B4D8AD007B266A /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		83AFC77322B4D8AD007B266A /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		83AFC77422B4D8AD007B266A /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		83AFC77522B4D8AD007B266A /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		83AFC77622B4D8AD007B266A /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		83AFC77822B4D8AD007B266A /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		83AFC77922B4D8AD007B266A /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		83AFC77A22B4D8AD007B266A /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		83AFC77B22B4D8AD007B266A /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F206043F21BFC5270016DD66 /* CYBigImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYBigImageView.h; sourceTree = "<group>"; };
 		F206044021BFC5270016DD66 /* CYBigImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYBigImageView.m; sourceTree = "<group>"; };
@@ -165,6 +195,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83AFC76B22B4D8AD007B266A /* test */ = {
+			isa = PBXGroup;
+			children = (
+				83AFC76C22B4D8AD007B266A /* 1.png */,
+				83AFC76D22B4D8AD007B266A /* 2.png */,
+				83AFC76E22B4D8AD007B266A /* 3.png */,
+				83AFC76F22B4D8AD007B266A /* 4.png */,
+				83AFC77022B4D8AD007B266A /* 5.png */,
+				83AFC77122B4D8AD007B266A /* 6.png */,
+				83AFC77222B4D8AD007B266A /* 7.png */,
+				83AFC77322B4D8AD007B266A /* 8.png */,
+				83AFC77422B4D8AD007B266A /* 9.png */,
+				83AFC77522B4D8AD007B266A /* 10.png */,
+				83AFC77622B4D8AD007B266A /* 11.png */,
+				83AFC77822B4D8AD007B266A /* 12.png */,
+				83AFC77922B4D8AD007B266A /* 13.png */,
+				83AFC77A22B4D8AD007B266A /* 14.png */,
+				83AFC77B22B4D8AD007B266A /* 15.png */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
 		EDA134C4310EF9115D2546B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A391B222323AE00036F827 /* test.png */,
+				83AFC76B22B4D8AD007B266A /* test */,
 				F2E46DE6216AF4A40066A068 /* Classes */,
 				F2E46DB3216AECBC0066A068 /* CYToolkit */,
 				F2E46DCC216AECBD0066A068 /* CYToolkitTests */,
@@ -589,10 +642,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83AFC78A22B4D8AD007B266A /* 2.png in Resources */,
+				83AFC78922B4D8AD007B266A /* 1.png in Resources */,
+				83AFC79022B4D8AD007B266A /* 8.png in Resources */,
+				83AFC79322B4D8AD007B266A /* 11.png in Resources */,
+				83AFC78B22B4D8AD007B266A /* 3.png in Resources */,
 				F2E46DC1216AECBD0066A068 /* LaunchScreen.storyboard in Resources */,
+				83AFC79722B4D8AD007B266A /* 14.png in Resources */,
+				83AFC79822B4D8AD007B266A /* 15.png in Resources */,
 				F2E46DBE216AECBD0066A068 /* Assets.xcassets in Resources */,
+				83AFC79122B4D8AD007B266A /* 9.png in Resources */,
+				83AFC78E22B4D8AD007B266A /* 6.png in Resources */,
+				83AFC78C22B4D8AD007B266A /* 4.png in Resources */,
 				F2E46DBC216AECBC0066A068 /* Main.storyboard in Resources */,
+				83AFC78F22B4D8AD007B266A /* 7.png in Resources */,
 				F2A391B322323AE00036F827 /* test.png in Resources */,
+				83AFC79222B4D8AD007B266A /* 10.png in Resources */,
+				83AFC79622B4D8AD007B266A /* 13.png in Resources */,
+				83AFC78D22B4D8AD007B266A /* 5.png in Resources */,
+				83AFC79522B4D8AD007B266A /* 12.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIViewController (CYCategory)
 
 + (UIViewController *)cyCurrentVc;
+- (void)cyShowAlertController:(UIAlertController *)alertController;
 
 @end
 
