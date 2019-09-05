@@ -86,6 +86,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)cyPercentStringWithMinNumber:(NSNumber *)minNum maxNumber:(NSNumber *)maxNum;
 
+#pragma mark - 功能
+
+/** 全局拷贝 */
+- (void)cyCopy;
+
+/** 应用内拷贝 */
+- (void)cyBundleCopy;
+
+/** 全局拷贝内容（粘贴） */
++ (NSString *)cyCopyedStr;
+
+/** 应用内拷贝内容（粘贴） */
++ (NSString *)cyBundleCopyedStr;
+
 #pragma mark - 其他
 
 /* 安全手机号
@@ -105,7 +119,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSAttributedString *)cyLineSpaceStringWithString:(NSString *)inputStr
                                           lineSpace:(float)lineSpace;
-
 
 /**
  * 目录遍历

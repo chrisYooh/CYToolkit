@@ -239,6 +239,32 @@
     return tmpStr;
 }
 
+#pragma mark - 功能（拷贝粘贴）
+
+- (void)cyCopy {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self;
+}
+
+- (void)cyBundleCopy {
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString * bundleId = [infoDic objectForKey:@"CFBundleIdentifier"];
+    UIPasteboard * myPasteboard = [UIPasteboard pasteboardWithName:bundleId create:YES];
+    myPasteboard.string = self;
+}
+
++ (NSString *)cyCopyedStr {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    return pasteboard.string;
+}
+
++ (NSString *)cyBundleCopyedStr {
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString * bundleId = [infoDic objectForKey:@"CFBundleIdentifier"];
+    UIPasteboard * myPasteboard = [UIPasteboard pasteboardWithName:bundleId create:NO];
+    return myPasteboard.string;
+}
+
 #pragma mark - 安全手机号
 
 + (NSString *)cySafePhoneNumberStringWithString:(NSString *)numberStr {
