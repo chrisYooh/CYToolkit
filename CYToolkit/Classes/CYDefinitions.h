@@ -10,24 +10,22 @@
 #define CYDefinitions_h
 
 /* 状态栏高度 */
-#define CYDefStatusBarHeight      ([[UIApplication sharedApplication] statusBarFrame].size.height)
+#define CYDefStatusBarHeight        ([[UIApplication sharedApplication] statusBarFrame].size.height)
 
 /* 导航栏高度 */
-#define CYDefNavHeight            (44)
+#define CYDefNavHeight              (44)
 
 /* 顶部高度（状态栏 + 导航栏高度） */
-#define CYDefTopHeight            (CYDefStatusBarHeight + CYDefNavHeight)
+#define CYDefTopHeight              (CYDefStatusBarHeight + CYDefNavHeight)
 
 /* Tab高度 */
-#define CYDefTabHeight            (CYDefIsIphoneX ? 83 : 49)
+#define CYDefTabHeight              (CYDefIsIphoneX ? 83 : 49)
 
 /* 是否有效URl */
-#define CYDefIsEmptyUrl(inputUrl)  (NO == [inputUrl isKindOfClass:[NSURL class]])
+#define CYDefIsEmptyUrl(inputUrl)   (NO == [inputUrl isKindOfClass:[NSURL class]])
 
-/* 是否iPhoneX */
-#define CYDefIsIphoneX \
-([UIScreen mainScreen].bounds.size.width == 375 \
-&& [UIScreen mainScreen].bounds.size.height == 812)
+/* 是否iPhoneX家族(X、XS、XR、XS Max) */
+#define CYDefIsIphoneX              [UIDevice cyIsIphoneXFamily]
 
 /* 屏幕信息 */
 #define CYDefScreenBounds     [UIScreen mainScreen].bounds

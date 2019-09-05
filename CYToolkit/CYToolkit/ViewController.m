@@ -12,9 +12,6 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UIView *tmpView;
-@property (nonatomic, strong) NSArray<UIImage *> *imageArray;
-
 @end
 
 @implementation ViewController
@@ -26,12 +23,10 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [@"测试" cyBundleCopy];
+    NSLog(@"%d", CYDefIsIphoneX);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"%@", [NSString cyCopyedStr]);
-    NSLog(@"%@", [NSString cyBundleCopyedStr]);
 }
 
 @end

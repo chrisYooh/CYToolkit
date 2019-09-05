@@ -37,11 +37,15 @@ static NSString *cyLogPhoneTokenKeychainKey = @"cyLogPhoneTokenKeychainKey";
     return [[UIDevice currentDevice] systemVersion];
 }
 
-+ (NSString *)cyPhoneTypeString {
-    
++ (NSString *)cyPhoneInternalName {
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *preciseType = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];
+    return preciseType;
+}
+
++ (NSString *)cyPhoneTypeString {
+    NSString *preciseType = [self cyPhoneInternalName];
     NSString *announceType = [self iphoneAnnounceTypeWithPreciseType:preciseType];
     NSString *typeStr = [NSString stringWithFormat:@"%@(%@)", announceType, preciseType];
     return typeStr;
@@ -143,61 +147,111 @@ static NSString *cyLogPhoneTokenKeychainKey = @"cyLogPhoneTokenKeychainKey";
     return address;
 }
 
++ (BOOL)cyIsIphoneXFamily {
+    NSString *preciseType = [self cyPhoneInternalName];
+    if ([preciseType isEqualToString:@"iPhone10,3"]
+        || [preciseType isEqualToString:@"iPhone10,6"]
+        || [preciseType isEqualToString:@"iPhone11,2"]
+        || [preciseType isEqualToString:@"iPhone11,4"]
+        || [preciseType isEqualToString:@"iPhone11,6"]
+        || [preciseType isEqualToString:@"iPhone11,8"]
+        ) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 #pragma mark -
 
+#define __typePair(appleStr, publicStr) \
+if ([preciseType isEqualToString:appleStr]) { return publicStr; }
+
 + (NSString *)iphoneAnnounceTypeWithPreciseType:(NSString *)preciseType {
+
+    __typePair(@"iPhone1,1", @"iPhone 2G")
+    __typePair(@"iPhone1,2", @"iPhone 3G")
+    __typePair(@"iPhone2,1", @"iPhone 3GS")
+    __typePair(@"iPhone3,1", @"iPhone 4")
+    __typePair(@"iPhone3,2", @"iPhone 4")
+    __typePair(@"iPhone3,3", @"iPhone 4")
+    __typePair(@"iPhone4,1", @"iPhone 4S")
+    __typePair(@"iPhone5,1", @"iPhone 5")
+    __typePair(@"iPhone5,2", @"iPhone 5")
+    __typePair(@"iPhone5,3", @"iPhone 5c")
+    __typePair(@"iPhone5,4", @"iPhone 5c")
+    __typePair(@"iPhone6,1", @"iPhone 5s")
+    __typePair(@"iPhone6,2", @"iPhone 5s")
     
-    if ([preciseType isEqualToString:@"iPhone1,1"]) { return @"iPhone 2G"; }
-    if ([preciseType isEqualToString:@"iPhone1,2"]) { return @"iPhone 3G"; }
-    if ([preciseType isEqualToString:@"iPhone2,1"]) { return @"iPhone 3GS"; }
-    if ([preciseType isEqualToString:@"iPhone3,1"]) { return @"iPhone 4"; }
-    if ([preciseType isEqualToString:@"iPhone3,2"]) { return @"iPhone 4"; }
-    if ([preciseType isEqualToString:@"iPhone3,3"]) { return @"iPhone 4"; }
-    if ([preciseType isEqualToString:@"iPhone4,1"]) { return @"iPhone 4S"; }
-    if ([preciseType isEqualToString:@"iPhone5,1"]) { return @"iPhone 5"; }
-    if ([preciseType isEqualToString:@"iPhone5,2"]) { return @"iPhone 5"; }
-    if ([preciseType isEqualToString:@"iPhone5,3"]) { return @"iPhone 5c"; }
-    if ([preciseType isEqualToString:@"iPhone5,4"]) { return @"iPhone 5c"; }
-    if ([preciseType isEqualToString:@"iPhone6,1"]) { return @"iPhone 5s"; }
-    if ([preciseType isEqualToString:@"iPhone6,2"]) { return @"iPhone 5s"; }
+    __typePair(@"iPhone7,1", @"iPhone 6 Plus")
+    __typePair(@"iPhone7,2", @"iPhone 6")
+    __typePair(@"iPhone8,1", @"iPhone 6s")
+    __typePair(@"iPhone8,2", @"iPhone 6s Plus")
+    __typePair(@"iPhone8,4", @"iPhone SE")
+    __typePair(@"iPhone9,1", @"iPhone 7")
+    __typePair(@"iPhone9,2", @"iPhone 7 Plus")
     
-    if ([preciseType isEqualToString:@"iPhone7,1"]) { return @"iPhone 6 Plus"; }
-    if ([preciseType isEqualToString:@"iPhone7,2"]) { return @"iPhone 6"; }
-    if ([preciseType isEqualToString:@"iPhone8,1"]) { return @"iPhone 6s"; }
-    if ([preciseType isEqualToString:@"iPhone8,2"]) { return @"iPhone 6s Plus"; }
-    if ([preciseType isEqualToString:@"iPhone8,4"]) { return @"iPhone SE"; }
-    if ([preciseType isEqualToString:@"iPhone9,1"]) { return @"iPhone 7"; }
-    if ([preciseType isEqualToString:@"iPhone9,2"]) { return @"iPhone 7 Plus"; }
+    __typePair(@"iPhone10,1", @"iPhone 8")
+    __typePair(@"iPhone10,4", @"iPhone 8")
+    __typePair(@"iPhone10,2", @"iPhone 8 Plus")
+    __typePair(@"iPhone10,5", @"iPhone 8 Plus")
+    __typePair(@"iPhone10,3", @"iPhone X")
+    __typePair(@"iPhone10,6", @"iPhone X")
+    __typePair(@"iPhone11,2", @"iPhone XS")
+    __typePair(@"iPhone11,4", @"iPhone XS Max")
+    __typePair(@"iPhone11,6", @"iPhone XS Max")
+    __typePair(@"iPhone11,8", @"iPhone XR")
     
-    if ([preciseType isEqualToString:@"iPod1,1"]) { return @"iPod Touch 1G"; }
-    if ([preciseType isEqualToString:@"iPod2,1"]) { return @"iPod Touch 2G"; }
-    if ([preciseType isEqualToString:@"iPod3,1"]) { return @"iPod Touch 3G"; }
-    if ([preciseType isEqualToString:@"iPod4,1"]) { return @"iPod Touch 4G"; }
-    if ([preciseType isEqualToString:@"iPod5,1"]) { return @"iPod Touch 5G"; }
+    __typePair(@"iPod1,1", @"iPod Touch 1G")
+    __typePair(@"iPod2,1", @"iPod Touch 2G")
+    __typePair(@"iPod3,1", @"iPod Touch 3G")
+    __typePair(@"iPod4,1", @"iPod Touch 4G")
+    __typePair(@"iPod5,1", @"iPod Touch 5G")
     
-    if ([preciseType isEqualToString:@"iPad1,1"]) { return @"iPad 1G"; }
-    if ([preciseType isEqualToString:@"iPad2,1"]) { return @"iPad 2"; }
-    if ([preciseType isEqualToString:@"iPad2,2"]) { return @"iPad 2"; }
-    if ([preciseType isEqualToString:@"iPad2,3"]) { return @"iPad 2"; }
-    if ([preciseType isEqualToString:@"iPad2,4"]) { return @"iPad 2"; }
-    if ([preciseType isEqualToString:@"iPad2,5"]) { return @"iPad Mini 1G"; }
-    if ([preciseType isEqualToString:@"iPad2,6"]) { return @"iPad Mini 1G"; }
-    if ([preciseType isEqualToString:@"iPad2,7"]) { return @"iPad Mini 1G"; }
-    if ([preciseType isEqualToString:@"iPad3,1"]) { return @"iPad 3"; }
-    if ([preciseType isEqualToString:@"iPad3,2"]) { return @"iPad 3"; }
-    if ([preciseType isEqualToString:@"iPad3,3"]) { return @"iPad 3"; }
-    if ([preciseType isEqualToString:@"iPad3,4"]) { return @"iPad 4"; }
-    if ([preciseType isEqualToString:@"iPad3,5"]) { return @"iPad 4"; }
-    if ([preciseType isEqualToString:@"iPad3,6"]) { return @"iPad 4"; }
+    __typePair(@"iPad1,1", @"iPad 1G")
+    __typePair(@"iPad2,1", @"iPad 2")
+    __typePair(@"iPad2,2", @"iPad 2")
+    __typePair(@"iPad2,3", @"iPad 2")
+    __typePair(@"iPad2,4", @"iPad 2")
+    __typePair(@"iPad2,5", @"iPad Mini 1G")
+    __typePair(@"iPad2,6", @"iPad Mini 1G")
+    __typePair(@"iPad2,7", @"iPad Mini 1G")
+    __typePair(@"iPad3,1", @"iPad 3")
+    __typePair(@"iPad3,2", @"iPad 3")
+    __typePair(@"iPad3,3", @"iPad 3")
+    __typePair(@"iPad3,4", @"iPad 4")
+    __typePair(@"iPad3,5", @"iPad 4")
+    __typePair(@"iPad3,6", @"iPad 4")
     
-    if ([preciseType isEqualToString:@"iPad4,1"]) { return @"iPad Air"; }
-    if ([preciseType isEqualToString:@"iPad4,2"]) { return @"iPad Air"; }
-    if ([preciseType isEqualToString:@"iPad4,3"]) { return @"iPad Air"; }
-    if ([preciseType isEqualToString:@"iPad4,4"]) { return @"iPad Mini 2G"; }
-    if ([preciseType isEqualToString:@"iPad4,5"]) { return @"iPad Mini 2G"; }
-    if ([preciseType isEqualToString:@"iPad4,6"]) { return @"iPad Mini 2G"; }
-    if ([preciseType isEqualToString:@"i386"]) { return @"iPhone Simulator"; }
-    if ([preciseType isEqualToString:@"x86_64"]) { return @"iPhone Simulator"; }
+    __typePair(@"iPad4,1", @"iPad Air")
+    __typePair(@"iPad4,2", @"iPad Air")
+    __typePair(@"iPad4,3", @"iPad Air")
+    __typePair(@"iPad4,4", @"iPad Mini 2G")
+    __typePair(@"iPad4,5", @"iPad Mini 2G")
+    __typePair(@"iPad4,6", @"iPad Mini 2G")
+    __typePair(@"iPad4,7", @"iPad mini 3")
+    __typePair(@"iPad4,8", @"iPad mini 3")
+    __typePair(@"iPad4,9", @"iPad mini 3")
+    
+    __typePair(@"iPad5,1", @"iPad mini 4")
+    __typePair(@"iPad5,2", @"iPad mini 4")
+    __typePair(@"iPad5,3", @"iPad Air 2")
+    __typePair(@"iPad5,4", @"iPad Air 2")
+    __typePair(@"iPad6,7", @"iPad Pro 12.9")
+    __typePair(@"iPad6,8", @"iPad Pro 12.9")
+    __typePair(@"iPad6,3", @"iPad Pro 9.7")
+    __typePair(@"iPad6,4", @"iPad Pro 9.7")
+    __typePair(@"iPad6,11", @"iPad 5")
+    __typePair(@"iPad6,12", @"iPad 5")
+    __typePair(@"iPad7,1", @"iPad Pro 12.9 inch 2nd gen")
+    __typePair(@"iPad7,2", @"iPad Pro 12.9 inch 2nd gen")
+    __typePair(@"iPad7,3", @"iPad Pro 10.5")
+    __typePair(@"iPad7,4", @"iPad Pro 10.5")
+    __typePair(@"iPad7,5", @"iPad 6")
+    __typePair(@"iPad7,6", @"iPad 6")
+    
+    __typePair(@"i386", @"iPhone Simulator")
+    __typePair(@"x86_64", @"iPhone Simulator")
     
     return preciseType;
 }

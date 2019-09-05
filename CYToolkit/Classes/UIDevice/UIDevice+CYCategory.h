@@ -13,11 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIDevice (CYCategory)
 
 + (NSString *)cyOSVersionString;        /* 系统版本 */
++ (NSString *)cyPhoneInternalName;      /* 手机内名 */
 + (NSString *)cyPhoneTypeString;        /* 手机型号 */
 + (NSString *)cyDeviceTokenString;      /* 设备标签（IDFA/类IDFA） */
 + (NSString *)cyIspInfoString;          /* 运营商信息 */
 + (NSString *)cyNetTypeString;          /* 网络类型，如：4G */
 + (NSString *)cyInnerIpString;          /* 内网IP */
+
++ (BOOL)cyIsIphoneXFamily;              /* 是否iphoneX，用以参照布局 */
 
 @end
 
