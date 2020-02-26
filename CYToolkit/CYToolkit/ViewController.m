@@ -7,10 +7,12 @@
 //
 
 #import "CYToolkit.h"
+#import "CYTTS.h"
 
 #import "ViewController.h"
 
 @interface ViewController ()
+<CYTTSDelegate>
 
 @end
 
@@ -24,9 +26,15 @@
     [super viewDidAppear:animated];
     
     NSLog(@"%d", CYDefIsIphoneX);
+    
+    [CYTTS sharedInstance].delegate = self;
+    [[CYTTS sharedInstance] speak:@"hello"];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 }
 
+- (void)ttsDidFinishedSpeak:(CYTTS *)tts {
+    NSLog(@"999");
+}
 @end

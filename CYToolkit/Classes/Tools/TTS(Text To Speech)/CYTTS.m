@@ -65,6 +65,9 @@
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance API_AVAILABLE(ios(7.0), watchos(1.0), tvos(7.0), macos(10.14)) {
     //    NSLog(@"Speech Finish");
+    if ([_delegate respondsToSelector:@selector(ttsDidFinishedSpeak:)]) {
+        [_delegate ttsDidFinishedSpeak:self];
+    }
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didPauseSpeechUtterance:(AVSpeechUtterance *)utterance API_AVAILABLE(ios(7.0), watchos(1.0), tvos(7.0), macos(10.14)) {
@@ -77,6 +80,9 @@
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didCancelSpeechUtterance:(AVSpeechUtterance *)utterance API_AVAILABLE(ios(7.0), watchos(1.0), tvos(7.0), macos(10.14)) {
     //    NSLog(@"Cancel Speech");
+    if ([_delegate respondsToSelector:@selector(ttsDidFinishedSpeak:)]) {
+        [_delegate ttsDidFinishedSpeak:self];
+    }
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer willSpeakRangeOfSpeechString:(NSRange)characterRange utterance:(AVSpeechUtterance *)utterance API_AVAILABLE(ios(7.0), watchos(1.0), tvos(7.0), macos(10.14)) {

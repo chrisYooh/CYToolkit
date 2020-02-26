@@ -13,7 +13,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class CYTTS;
+@protocol CYTTSDelegate <NSObject>
+
+- (void)ttsDidFinishedSpeak:(CYTTS *)tts;
+
+@end
+
 @interface CYTTS : NSObject
+
+@property (nonatomic, assign) id <CYTTSDelegate> delegate;
 
 @property (nonatomic, assign) float tone;       /* 音调，0.5 ~ 2.0, 默认 1 */
 @property (nonatomic, assign) float volume;     /* 音量，0 ~ 1， 默认 1 */
