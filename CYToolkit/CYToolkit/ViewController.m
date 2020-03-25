@@ -7,12 +7,11 @@
 //
 
 #import "CYToolkit.h"
-#import "CYTTS.h"
+#import "CYFifoBuffer.h"
 
 #import "ViewController.h"
 
 @interface ViewController ()
-<CYTTSDelegate>
 
 @end
 
@@ -25,16 +24,22 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSLog(@"%d", CYDefIsIphoneX);
+    [@"111" cyCacheSaveForKey:@"1"];
+    [@"222" cyCacheSaveForKey:@"2"];
+    [@"333" cyCacheSaveForKey:@"3"];
+    [@"444" cyCacheSaveForKey:@"4"];
+    [@"555" cyCacheSaveForKey:@"5"];
     
-    [CYTTS sharedInstance].delegate = self;
-    [[CYTTS sharedInstance] speak:@"hello"];
+    NSLog(@"%d", [[CYFifoBuffer sharedBuffer] curCachedNumber]);
+    NSLog(@"%@", [[CYFifoBuffer sharedBuffer] curObjects]);
+
+    [[CYFifoBuffer sharedBuffer] refreshKey:@"3"];
+
+    NSLog(@"%d", [[CYFifoBuffer sharedBuffer] curCachedNumber]);
+    NSLog(@"%@", [[CYFifoBuffer sharedBuffer] curObjects]);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 }
 
-- (void)ttsDidFinishedSpeak:(CYTTS *)tts {
-    NSLog(@"999");
-}
 @end

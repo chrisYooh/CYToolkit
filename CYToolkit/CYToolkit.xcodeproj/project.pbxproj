@@ -23,6 +23,7 @@
 		83AFC79622B4D8AD007B266A /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77922B4D8AD007B266A /* 13.png */; };
 		83AFC79722B4D8AD007B266A /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77A22B4D8AD007B266A /* 14.png */; };
 		83AFC79822B4D8AD007B266A /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77B22B4D8AD007B266A /* 15.png */; };
+		83B45C75242B3AF800898145 /* CYFifoBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B45C74242B3AF800898145 /* CYFifoBuffer.m */; };
 		F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044021BFC5270016DD66 /* CYBigImageView.m */; };
 		F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044421C09C450016DD66 /* UIImageView+CYCategory.m */; };
 		F206044C21C0A6040016DD66 /* CYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044B21C0A6040016DD66 /* CYToastView.m */; };
@@ -95,6 +96,8 @@
 		83AFC77922B4D8AD007B266A /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
 		83AFC77A22B4D8AD007B266A /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
 		83AFC77B22B4D8AD007B266A /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
+		83B45C73242B3AF800898145 /* CYFifoBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYFifoBuffer.h; sourceTree = "<group>"; };
+		83B45C74242B3AF800898145 /* CYFifoBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYFifoBuffer.m; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F206043F21BFC5270016DD66 /* CYBigImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYBigImageView.h; sourceTree = "<group>"; };
 		F206044021BFC5270016DD66 /* CYBigImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYBigImageView.m; sourceTree = "<group>"; };
@@ -217,6 +220,15 @@
 			path = test;
 			sourceTree = "<group>";
 		};
+		83B45C72242B3AC700898145 /* FifoBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				83B45C73242B3AF800898145 /* CYFifoBuffer.h */,
+				83B45C74242B3AF800898145 /* CYFifoBuffer.m */,
+			);
+			path = FifoBuffer;
+			sourceTree = "<group>";
+		};
 		EDA134C4310EF9115D2546B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +271,7 @@
 			children = (
 				F267D7F5218FEFB70043C680 /* NSObject+CYCategory.h */,
 				F267D7F6218FEFB70043C680 /* NSObject+CYCategory.m */,
+				83B45C72242B3AC700898145 /* FifoBuffer */,
 			);
 			path = NSObject;
 			sourceTree = "<group>";
@@ -711,6 +724,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E46E1C216AFDC20066A068 /* UIFont+CYCategory.m in Sources */,
+				83B45C75242B3AF800898145 /* CYFifoBuffer.m in Sources */,
 				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
 				F2D294D22277ECF90057DC5F /* CYTTS.m in Sources */,

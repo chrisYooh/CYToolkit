@@ -23,6 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)cyReadAllAttrWithDecoder:(NSCoder *)aDecoder;
 - (void)cySaveAllAttrWithCoder:(NSCoder *)aCoder;
 
+#pragma mark - Instance Cache & Cache Load
+
+- (void)cyCacheSaveForKey:(NSString *)objKey;
+- (id)cyCacheLoadForKey:(NSString *)objKey;
+
 #pragma mark - String runtime
 
 /* 以字符串为输入执行方法 */

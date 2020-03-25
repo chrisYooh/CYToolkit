@@ -7,6 +7,7 @@
 //
 
 #import <objc/runtime.h>
+#import "CYFifoBuffer.h"
 
 #import "NSObject+CYCategory.h"
 
@@ -125,6 +126,16 @@
         }
     }
     return path;
+}
+
+#pragma mark - Instance Cache & Cache Load
+
+- (void)cyCacheSaveForKey:(NSString *)objKey {
+    [[CYFifoBuffer sharedBuffer] pushObject:self forKey:objKey];
+}
+
+- (id)cyCacheLoadForKey:(NSString *)objKey {
+    return [[CYFifoBuffer sharedBuffer] objectForKey:objKey];
 }
 
 #pragma mark - String runtime
