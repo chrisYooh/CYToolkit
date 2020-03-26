@@ -41,8 +41,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'NSObject' do |ss|
-    ss.source_files = "CYToolkit/Classes/NSObject/*"
-    ss.public_header_files = "CYToolkit/Classes/NSObject/*.h"
+    ss.source_files = "CYToolkit/Classes/NSObject/**/*"
+    ss.public_header_files = "CYToolkit/Classes/NSObject/**/*.h"
   end
 
   s.subspec 'NSString' do |ss|
