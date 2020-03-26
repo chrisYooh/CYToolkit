@@ -24,6 +24,7 @@
 		83AFC79722B4D8AD007B266A /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77A22B4D8AD007B266A /* 14.png */; };
 		83AFC79822B4D8AD007B266A /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC77B22B4D8AD007B266A /* 15.png */; };
 		83B45C75242B3AF800898145 /* CYFifoBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B45C74242B3AF800898145 /* CYFifoBuffer.m */; };
+		83B45C7C242C523A00898145 /* CYAlbumPhotoTraversaler.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B45C7B242C523A00898145 /* CYAlbumPhotoTraversaler.m */; };
 		F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044021BFC5270016DD66 /* CYBigImageView.m */; };
 		F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044421C09C450016DD66 /* UIImageView+CYCategory.m */; };
 		F206044C21C0A6040016DD66 /* CYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = F206044B21C0A6040016DD66 /* CYToastView.m */; };
@@ -98,6 +99,8 @@
 		83AFC77B22B4D8AD007B266A /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
 		83B45C73242B3AF800898145 /* CYFifoBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYFifoBuffer.h; sourceTree = "<group>"; };
 		83B45C74242B3AF800898145 /* CYFifoBuffer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYFifoBuffer.m; sourceTree = "<group>"; };
+		83B45C7A242C523A00898145 /* CYAlbumPhotoTraversaler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYAlbumPhotoTraversaler.h; sourceTree = "<group>"; };
+		83B45C7B242C523A00898145 /* CYAlbumPhotoTraversaler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYAlbumPhotoTraversaler.m; sourceTree = "<group>"; };
 		C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CYToolkit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F206043F21BFC5270016DD66 /* CYBigImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYBigImageView.h; sourceTree = "<group>"; };
 		F206044021BFC5270016DD66 /* CYBigImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYBigImageView.m; sourceTree = "<group>"; };
@@ -229,6 +232,15 @@
 			path = FifoBuffer;
 			sourceTree = "<group>";
 		};
+		83B45C76242B4AF700898145 /* AlbumPhotoLoader */ = {
+			isa = PBXGroup;
+			children = (
+				83B45C7A242C523A00898145 /* CYAlbumPhotoTraversaler.h */,
+				83B45C7B242C523A00898145 /* CYAlbumPhotoTraversaler.m */,
+			);
+			path = AlbumPhotoLoader;
+			sourceTree = "<group>";
+		};
 		EDA134C4310EF9115D2546B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +274,7 @@
 			children = (
 				F206044E21C0AC480016DD66 /* UIImage+CYCategory.h */,
 				F206044F21C0AC480016DD66 /* UIImage+CYCategory.m */,
+				83B45C76242B4AF700898145 /* AlbumPhotoLoader */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -744,6 +757,7 @@
 				F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */,
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
+				83B45C7C242C523A00898145 /* CYAlbumPhotoTraversaler.m in Sources */,
 				F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */,
 				F2E46DC4216AECBD0066A068 /* main.m in Sources */,
 				F206045021C0AC480016DD66 /* UIImage+CYCategory.m in Sources */,

@@ -112,6 +112,14 @@
      }];
 }
 
++ (void)cyTraversalUserPhotosWithCallback:(CYAlbumPhotoTraversalerBlock)callback {
+    [[CYAlbumPhotoTraversaler sharedTraversaler] traversalUserPhotosWithCallback:callback];
+}
+
++ (void)cyTraversalPhotosInAlbum:(NSString *)albumName withCallback:(CYAlbumPhotoTraversalerBlock)callback {
+    [[CYAlbumPhotoTraversaler sharedTraversaler] traversalPhotosInAlbum:albumName withCallback:callback];
+}
+
 #pragma mark - MISC
 
 - (CGAffineTransform)toUpTransform {

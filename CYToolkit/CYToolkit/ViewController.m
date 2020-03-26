@@ -7,7 +7,7 @@
 //
 
 #import "CYToolkit.h"
-#import "CYFifoBuffer.h"
+#import "CYAlbumPhotoTraversaler.h"
 
 #import "ViewController.h"
 
@@ -24,19 +24,18 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [@"111" cyCacheSaveForKey:@"1"];
-    [@"222" cyCacheSaveForKey:@"2"];
-    [@"333" cyCacheSaveForKey:@"3"];
-    [@"444" cyCacheSaveForKey:@"4"];
-    [@"555" cyCacheSaveForKey:@"5"];
+    CYAlbumPhotoTraversaler *tmpTv = [[CYAlbumPhotoTraversaler alloc] init];
     
-    NSLog(@"%d", [[CYFifoBuffer sharedBuffer] curCachedNumber]);
-    NSLog(@"%@", [[CYFifoBuffer sharedBuffer] curObjects]);
-
-    [[CYFifoBuffer sharedBuffer] refreshKey:@"3"];
-
-    NSLog(@"%d", [[CYFifoBuffer sharedBuffer] curCachedNumber]);
-    NSLog(@"%@", [[CYFifoBuffer sharedBuffer] curObjects]);
+    static int i = 0;
+    [UIImage cyTraversalUserPhotosWithCallback:^(NSString * _Nonnull albumName, UIImage * _Nonnull image) {
+        NSLog(@"%04d   %@", i, NSStringFromCGSize(image.size));
+        i++;
+    }];
+    
+//    [UIImage cyTraversalPhotosInAlbum:@"Favorites" withCallback:^(NSString * _Nonnull albumName, UIImage * _Nonnull image) {
+//                NSLog(@"%04d   %@", i, NSStringFromCGSize(image.size));
+//        i++;
+//    }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

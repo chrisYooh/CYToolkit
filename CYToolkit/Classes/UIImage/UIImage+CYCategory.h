@@ -8,6 +8,7 @@
 
 #import <CoreMedia/CMSampleBuffer.h>
 #import <UIKit/UIKit.h>
+#import "CYAlbumPhotoTraversaler.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,8 +28,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIImage *)cyUpOrientationImage;
 
+#pragma mark - 相册操作
+
 /** 将图片存入相册 */
 - (void)cySaveToAlbum;
+
+/** 同步遍历用户相册照片 */
++ (void)cyTraversalUserPhotosWithCallback:(CYAlbumPhotoTraversalerBlock)callback;
+
+/** 同步遍历特定相册照片 */
++ (void)cyTraversalPhotosInAlbum:(NSString *)albumName withCallback:(CYAlbumPhotoTraversalerBlock)callback;
 
 @end
 
