@@ -141,4 +141,28 @@ static char cykActionHandlerLongPressGestureKey;
     [CYToastView showToast:toast onParentView:[UIApplication sharedApplication].delegate.window duration:duration];
 }
 
+#pragma mark - 动画过度
+
+- (void)cySetAlphaHidden:(BOOL)aHidden {
+    self.alpha = !aHidden;
+    [self.layer addAnimation:[self __fadeTransitionWithDuration:0.3] forKey:nil];
+}
+
+- (void)cyFadeTrans {
+    [self.layer addAnimation:[self __fadeTransitionWithDuration:0.3] forKey:nil];
+}
+
+- (CAAnimation *)__fadeTransitionWithDuration:(float)duration {
+    
+    CATransition *animation = [[CATransition alloc] init];
+    [animation setRemovedOnCompletion:YES];
+    [animation setRepeatCount:1];
+    
+    animation.duration = duration;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionFade;
+    
+    return animation;
+}
+
 @end

@@ -49,6 +49,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)cyShowToast:(NSString *)toast;
 + (void)cyShowToast:(NSString *)toast duration:(NSTimeInterval)duration;
 
+#pragma mark - 动画过度
+
+/** 通过alpha属性进行过度，  */
+- (void)cySetAlphaHidden:(BOOL)aHidden;
+- (void)cyFadeTrans;
+
 @end
 
 NS_ASSUME_NONNULL_END
