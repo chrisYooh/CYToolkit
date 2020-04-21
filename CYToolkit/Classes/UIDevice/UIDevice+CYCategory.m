@@ -255,6 +255,7 @@ if ([preciseType isEqualToString:appleStr]) { return publicStr; }
     __typePair(@"iPhone12,1", @"iPhone 11")
     __typePair(@"iPhone12,3", @"iPhone 11 Pro")
     __typePair(@"iPhone12,5", @"iPhone 11 Pro Max")
+    __typePair(@"iPhone12,8", @"iPhone SE 2G")
         
     return nil;
 }
@@ -321,7 +322,9 @@ if ([preciseType isEqualToString:appleStr]) { return publicStr; }
     __typePair(@"iPad8,2", @"iPad Pro 11.0-inch")
     __typePair(@"iPad8,3", @"iPad Pro 11.0-inch")
     __typePair(@"iPad8,4", @"iPad Pro 11.0-inch")
-    
+    __typePair(@"iPad8,9", @"iPad Pro 11.0-inch 2G")
+    __typePair(@"iPad8,10", @"iPad Pro 11.0-inch 2G")
+
     __typePair(@"iPad6,7", @"iPad Pro 12.9-inch")
     __typePair(@"iPad6,8", @"iPad Pro 12.9-inch")
     __typePair(@"iPad7,1", @"iPad Pro 12.9-inch 2G")
@@ -330,7 +333,9 @@ if ([preciseType isEqualToString:appleStr]) { return publicStr; }
     __typePair(@"iPad8,6", @"iPad Pro 12.9-inch 3G")
     __typePair(@"iPad8,7", @"iPad Pro 12.9-inch 3G")
     __typePair(@"iPad8,8", @"iPad Pro 12.9-inch 3G")
-            
+    __typePair(@"iPad8,11", @"iPad Pro 12.9-inch 4G")
+    __typePair(@"iPad8,12", @"iPad Pro 12.9-inch 4G")
+    
     return nil;
 }
 
@@ -350,10 +355,7 @@ if ([preciseType isEqualToString:appleStr]) { return publicStr; }
     __typePair(@"iPad5,2", @"iPad mini 4G")
     __typePair(@"iPad11,1", @"iPad mini 5G")
     __typePair(@"iPad11,2", @"iPad mini 5G")
-    
-    __typePair(@"i386", @"iPhone Simulator")
-    __typePair(@"x86_64", @"iPhone Simulator")
-    
+        
     return nil;
 }
 

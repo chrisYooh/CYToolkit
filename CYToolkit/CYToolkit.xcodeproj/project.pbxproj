@@ -951,6 +951,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Classes/Tools/Voice/Compress/Lame",
 				);
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -975,6 +976,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Classes/Tools/Voice/Compress/Lame",
 				);
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = Chris.CYToolkit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
