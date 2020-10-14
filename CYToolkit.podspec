@@ -97,8 +97,26 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Tools' do |ss|
-    ss.source_files = "CYToolkit/Classes/Tools/**/*"
-    ss.public_header_files = "CYToolkit/Classes/Tools/**/*.h"
+    ss.subspec 'AudioTool' do |sss|
+        sss.source_files = "CYToolkit/Classes/Tools/AudioTool/**/*"
+        sss.public_header_files = "CYToolkit/Classes/Tools/AudioTool/**/*.h"
+    end
+
+    ss.subspec 'VideoTool' do |sss|
+        sss.source_files = "CYToolkit/Classes/Tools/VideoTool/**/*"
+        sss.public_header_files = "CYToolkit/Classes/Tools/VideoTool/**/*.h"
+    end
+
+    ss.subspec 'TTS' do |sss|
+        sss.source_files = "CYToolkit/Classes/Tools/TTS(Text To Speech)/**/*"
+        sss.public_header_files = "CYToolkit/Classes/Tools/TTS(Text To Speech)/**/*.h"
+    end
+
+    ss.subspec 'ASR' do |sss|
+        sss.source_files = "CYToolkit/Classes/Tools/ASR(Automatic Speech Recognition)/**/*"
+        sss.public_header_files = "CYToolkit/Classes/Tools/ASR(Automatic Speech Recognition)/**/*.h"
+    end
+
     ss.dependency "CYToolkit/Compatible"
     ss.dependency "CYToolkit/UIImage"
   end
