@@ -8,7 +8,10 @@
 
 #import "UIWebView+CYCategory.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
 @implementation UIWebView (CYCategory)
+#pragma clang diagnostic pop
 
 +(void)cyConfigUserAgentWithDeviceIdentifier:(NSString *)deviceIdentifier
                              withNetworkType:(NSString *)networkType {

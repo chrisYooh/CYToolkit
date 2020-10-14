@@ -84,7 +84,11 @@ static NSString *carrierInfo() {
     NSMutableString* cInfo = [NSMutableString string];
     
     CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CTCarrier *carrier = [networkInfo subscriberCellularProvider];
+#pragma clang diagnostic pop
     
     NSString *carrierName = [carrier carrierName];
     if (carrierName != nil){

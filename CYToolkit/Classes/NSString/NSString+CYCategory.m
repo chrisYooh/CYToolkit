@@ -353,7 +353,9 @@
         NSLog(@"目标文件不存在");
         return;
     }
-    
+  
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
     NSURL *fileUrl = [NSURL fileURLWithPath:self];
     
@@ -369,6 +371,8 @@
                                               NSLog(@"Save to album succeed!");
                                           }
                                       }];
+#pragma clang diagnostic pop
+    
 }
 
 + (NSString *)cyMainBundlePath {

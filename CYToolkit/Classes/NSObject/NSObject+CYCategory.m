@@ -21,7 +21,10 @@
         return NO;
     }
     NSMutableData *data = [[NSMutableData alloc] init];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSKeyedArchiver *aCoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+#pragma clang diagnostic pop
     [aCoder encodeObject:self forKey:objKey];
     [aCoder finishEncoding];
     
@@ -69,7 +72,10 @@
         if (0 == data.length) {
             return nil;
         }
-        NSKeyedUnarchiver *acoder = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        NSKeyedUnarchiver *acoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+#pragma clang diagnostic pop
         //从包中取出数据
         id<NSCoding> info = [acoder decodeObjectForKey:objKey];
         //结束解归档

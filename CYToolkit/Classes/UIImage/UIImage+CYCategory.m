@@ -98,6 +98,8 @@
 
 - (void)cySaveToAlbum {
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     
     [library
@@ -110,6 +112,7 @@
              NSLog(@"图片保存相册成功");
          }
      }];
+#pragma clang diagnostic pop
 }
 
 + (void)cyTraversalUserPhotosWithCallback:(CYAlbumPhotoTraversalerBlock)callback {

@@ -34,7 +34,10 @@
     /* 2. Add New Item */
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionaryWithDictionary:baseQueryDic];
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSData *objData = [NSKeyedArchiver archivedDataWithRootObject:object];
+#pragma clang diagnostic pop
     [dataDic setObject:objData forKey:(id)kSecValueData];
     SecItemAdd((CFDictionaryRef)dataDic, NULL);
 }
@@ -52,7 +55,10 @@
     CFDataRef objData = NULL;
     OSStatus retStatus = SecItemCopyMatching((CFDictionaryRef)queryDic, (CFTypeRef *)&objData);
     if (noErr == retStatus) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         retObj = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)objData];
+#pragma clang diagnostic pop
     }
     
     if (objData) {

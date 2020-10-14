@@ -219,9 +219,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         if ([tmpDevice lockForConfiguration:nil]) {
             
             /* 闪光灯关闭 */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             if ([tmpDevice isFlashModeSupported:AVCaptureFlashModeOff]) {
                 [tmpDevice setFlashMode:AVCaptureFlashModeOff];
             }
+#pragma clang diagnostic pop
             
             /* 自动白平衡 */
             if ([tmpDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
@@ -292,7 +295,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 #pragma mark - AV Camera Position
 
 - (AVCaptureDevice *)__frontCamera {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+#pragma clang diagnostic pop
     for (AVCaptureDevice *camera in cameras) {
         if ([camera position] == AVCaptureDevicePositionFront) {
             return camera;
@@ -303,7 +309,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 - (AVCaptureDevice *)__backCamera {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     NSArray *cameras = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+#pragma clang diagnostic pop
     for (AVCaptureDevice *camera in cameras) {
         if ([camera position] == AVCaptureDevicePositionBack) {
             return camera;

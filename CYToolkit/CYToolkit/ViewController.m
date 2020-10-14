@@ -63,7 +63,8 @@ CYVoicePlayerDelegate>
         [_player play];
     }
 
-    iii = (++iii % 3);
+    iii++;
+    iii = iii % 3;
 }
 
 #pragma mark - CYVoiceCollectorDelegate

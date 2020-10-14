@@ -80,7 +80,10 @@ static NSString *cyLogPhoneTokenKeychainKey = @"cyLogPhoneTokenKeychainKey";
 + (NSString *)cyIspInfoString {
     
     CTTelephonyNetworkInfo *telephonyInfo = [[CTTelephonyNetworkInfo alloc] init];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CTCarrier *carrier = [telephonyInfo subscriberCellularProvider];
+#pragma clang diagnostic pop
     
     /* Carrier Name在获取失败的时候会保持上次获取的信息，
      * 所以使用mobileContryCode来临时替代获取成功失败的判定 */

@@ -12,8 +12,8 @@
 
 @protocol CYVoiceCollectorDelegate <NSObject>
 
-- (void)collector:(CYVoiceCollector *)tool getVoiceData:(NSData *)voiceData;         /* 获取即时声音数据 */
-- (void)collector:(CYVoiceCollector *)tool getWavFile:(NSString *)wavFilePath;       /* 录制结束，获取声音文件 */
+- (void)collector:(CYVoiceCollector * _Nullable)tool getVoiceData:(NSData * _Nullable)voiceData;        /* 获取即时声音数据 */
+- (void)collector:(CYVoiceCollector * _Nullable)tool getWavFile:(NSString * _Nullable)wavFilePath;      /* 录制结束，获取声音文件 */
 
 @end
 
