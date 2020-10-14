@@ -6,14 +6,19 @@
 //  Copyright © 2018 杨一凡. All rights reserved.
 //
 
-#import "CYToolkit.h"
-#import "CYAlbumPhotoTraversaler.h"
+#import "CYVoiceCollector.h"
+#import "CYVoicePlayer.h"
 
 #import "ViewController.h"
 
 @interface ViewController ()
+<CYVoiceCollectorDelegate,
+CYVoicePlayerDelegate>
 
-@property (nonatomic, strong) UIView *tmpView;
+@property (nonatomic, strong) CYVoiceCollector *collector;
+@property (nonatomic, strong) CYVoicePlayer *player;
+
+@property (nonatomic, strong) NSString *curAudioPath;
 
 @end
 
@@ -25,30 +30,60 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-  
-    _tmpView = [[UIView alloc] init];
-    [_tmpView setBackgroundColor:[UIColor redColor]];
     
-    [self.view addSubview:_tmpView];
-    [_tmpView setFrame:CGRectMake(200, 200, 100, 100)];
+    _collector = [[CYVoiceCollector alloc] init];
+    _collector.channelNum = 1;
+    _collector.sampleRate = 44100;
+    _collector.feedbackSecRate = 0.05;
+    _collector.autoSaveWavFile = YES;
+    _collector.delegate = self;
     
+    _player = [[CYVoicePlayer alloc] init];
+    _player.delegate = self;
     
-//    CYAlbumPhotoTraversaler *tmpTv = [[CYAlbumPhotoTraversaler alloc] init];
-    
-//    static int i = 0;
-//    [UIImage cyTraversalUserPhotosWithCallback:^(NSString * _Nonnull albumName, UIImage * _Nonnull image) {
-//        NSLog(@"%04d   %@", i, NSStringFromCGSize(image.size));
-//        i++;
-//    }];
-    
-//    [UIImage cyTraversalPhotosInAlbum:@"Favorites" withCallback:^(NSString * _Nonnull albumName, UIImage * _Nonnull image) {
-//                NSLog(@"%04d   %@", i, NSStringFromCGSize(image.size));
-//        i++;
-//    }];
+    _curAudioPath = nil;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [_tmpView cySetAlphaHidden:_tmpView.alpha];
+    
+    static int iii = 0;
+    
+    if (0 == iii) {
+        NSLog(@"开始录音...");
+        [_collector start];
+        
+    } else if (1 == iii) {
+        NSLog(@"结束录音...");
+        [_collector stop];
+
+    } else if (2 == iii) {
+
+        NSLog(@"播放录音...");
+        [_player loadAudioFile:_curAudioPath];
+        [_player play];
+    }
+
+    iii = (++iii % 3);
+}
+
+#pragma mark - CYVoiceCollectorDelegate
+
+- (void)collector:(CYVoiceCollector *)tool getVoiceData:(NSData *)voiceData {
+    NSLog(@"获得数据 %d", (int)voiceData.length);
+}
+
+- (void)collector:(CYVoiceCollector *)tool getWavFile:(NSString *)wavFilePath {
+    _curAudioPath = wavFilePath;
+}
+
+#pragma mark - CYVoicePlayerDelegate
+
+- (void)playerDidFinishPlay:(CYVoicePlayer *)player {
+    
+}
+
+- (void)player:(CYVoicePlayer *)player playSecUpdated:(NSTimeInterval)playSec {
+    
 }
 
 @end

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28558D3AEAACEBCB537B812E /* libPods-CYToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14EC1C4B380C4897C1453EF /* libPods-CYToolkit.a */; };
+		833B96DB2536A16900D3D5AC /* CYWavHeaderCreater.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96D92536A16900D3D5AC /* CYWavHeaderCreater.m */; };
+		833B96E82536A8AC00D3D5AC /* CYVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */; };
+		833B96EE2536A8D700D3D5AC /* CYVoiceCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */; };
 		83AFC78922B4D8AD007B266A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76C22B4D8AD007B266A /* 1.png */; };
 		83AFC78A22B4D8AD007B266A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76D22B4D8AD007B266A /* 2.png */; };
 		83AFC78B22B4D8AD007B266A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76E22B4D8AD007B266A /* 3.png */; };
@@ -82,6 +85,12 @@
 /* Begin PBXFileReference section */
 		0B49B4CFF47C7F854DFCB5C1 /* Pods-CYToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		501CF6E5202CBA7199034EE8 /* Pods-CYToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CYToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CYToolkit/Pods-CYToolkit.release.xcconfig"; sourceTree = "<group>"; };
+		833B96D92536A16900D3D5AC /* CYWavHeaderCreater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYWavHeaderCreater.m; sourceTree = "<group>"; };
+		833B96DA2536A16900D3D5AC /* CYWavHeaderCreater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYWavHeaderCreater.h; sourceTree = "<group>"; };
+		833B96E62536A8AC00D3D5AC /* CYVoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYVoicePlayer.h; sourceTree = "<group>"; };
+		833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYVoicePlayer.m; sourceTree = "<group>"; };
+		833B96EC2536A8D700D3D5AC /* CYVoiceCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVoiceCollector.h; sourceTree = "<group>"; };
+		833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoiceCollector.m; sourceTree = "<group>"; };
 		83AFC76C22B4D8AD007B266A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		83AFC76D22B4D8AD007B266A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		83AFC76E22B4D8AD007B266A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -201,6 +210,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		839DDC1B2522D7BA00262D9D /* AudioTool */ = {
+			isa = PBXGroup;
+			children = (
+				833B96EC2536A8D700D3D5AC /* CYVoiceCollector.h */,
+				833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */,
+				833B96DA2536A16900D3D5AC /* CYWavHeaderCreater.h */,
+				833B96D92536A16900D3D5AC /* CYWavHeaderCreater.m */,
+				833B96E62536A8AC00D3D5AC /* CYVoicePlayer.h */,
+				833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */,
+			);
+			path = AudioTool;
+			sourceTree = "<group>";
+		};
 		83AFC76B22B4D8AD007B266A /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +314,7 @@
 		F2A38F5D222E57F60036F827 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				839DDC1B2522D7BA00262D9D /* AudioTool */,
 				F2D294CF2277ECCA0057DC5F /* VideoTool */,
 				F2D294CE2277EBFE0057DC5F /* TTS(Text To Speech) */,
 				F2D294CD2277EBD80057DC5F /* ASR(Automatic Speech Recognition) */,
@@ -745,6 +768,7 @@
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,
 				F2D294D52277EE4C0057DC5F /* NSString+CYTTS.m in Sources */,
 				F206044121BFC5270016DD66 /* CYBigImageView.m in Sources */,
+				833B96EE2536A8D700D3D5AC /* CYVoiceCollector.m in Sources */,
 				F206044C21C0A6040016DD66 /* CYToastView.m in Sources */,
 				F2E46DF2216AF68E0066A068 /* CYIdfa.m in Sources */,
 				F2A38F63222E61340036F827 /* CYVideoToolTestViewController.m in Sources */,
@@ -756,6 +780,7 @@
 				F2E46E16216AFD480066A068 /* UIButton+CYCategory.m in Sources */,
 				F206044521C09C450016DD66 /* UIImageView+CYCategory.m in Sources */,
 				F2F6C12E216DE88F00B5DD2E /* CYCompatible.m in Sources */,
+				833B96E82536A8AC00D3D5AC /* CYVoicePlayer.m in Sources */,
 				F2E46E2E216B22AF0066A068 /* UIViewController+CYCategory.m in Sources */,
 				83B45C7C242C523A00898145 /* CYAlbumPhotoTraversaler.m in Sources */,
 				F2A38F60222E583A0036F827 /* CYVideoTool.m in Sources */,
@@ -767,6 +792,7 @@
 				F2E46DB6216AECBC0066A068 /* AppDelegate.m in Sources */,
 				F2E46DEF216AF6400066A068 /* UIDevice+CYCategory.m in Sources */,
 				F2E46DF8216AF7D10066A068 /* CLLocation+CYCategory.m in Sources */,
+				833B96DB2536A16900D3D5AC /* CYWavHeaderCreater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
