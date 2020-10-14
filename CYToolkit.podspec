@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CYToolkit"
-  s.version      = "1.0.8"
+  s.version      = "1.0.9"
   s.summary      = "CYToolkit"
   s.description  = "Used for APP based support, Based on YYCategories（But no relay on）"
   s.homepage     = "https://github.com/chrisYooh/CYToolkit.git"
