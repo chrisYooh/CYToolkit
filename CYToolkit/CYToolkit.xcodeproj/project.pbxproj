@@ -11,6 +11,7 @@
 		833B96DB2536A16900D3D5AC /* CYWavHeaderCreater.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96D92536A16900D3D5AC /* CYWavHeaderCreater.m */; };
 		833B96E82536A8AC00D3D5AC /* CYVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */; };
 		833B96EE2536A8D700D3D5AC /* CYVoiceCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */; };
+		833B9790253EC9A500D3D5AC /* CYVideo2Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B978F253EC9A500D3D5AC /* CYVideo2Image.m */; };
 		83AFC78922B4D8AD007B266A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76C22B4D8AD007B266A /* 1.png */; };
 		83AFC78A22B4D8AD007B266A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76D22B4D8AD007B266A /* 2.png */; };
 		83AFC78B22B4D8AD007B266A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76E22B4D8AD007B266A /* 3.png */; };
@@ -91,6 +92,8 @@
 		833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYVoicePlayer.m; sourceTree = "<group>"; };
 		833B96EC2536A8D700D3D5AC /* CYVoiceCollector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVoiceCollector.h; sourceTree = "<group>"; };
 		833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoiceCollector.m; sourceTree = "<group>"; };
+		833B978E253EC9A500D3D5AC /* CYVideo2Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideo2Image.h; sourceTree = "<group>"; };
+		833B978F253EC9A500D3D5AC /* CYVideo2Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideo2Image.m; sourceTree = "<group>"; };
 		83AFC76C22B4D8AD007B266A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		83AFC76D22B4D8AD007B266A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		83AFC76E22B4D8AD007B266A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 			children = (
 				F2A38F5E222E583A0036F827 /* CYVideoTool.h */,
 				F2A38F5F222E583A0036F827 /* CYVideoTool.m */,
+				833B978E253EC9A500D3D5AC /* CYVideo2Image.h */,
+				833B978F253EC9A500D3D5AC /* CYVideo2Image.m */,
 			);
 			path = VideoTool;
 			sourceTree = "<group>";
@@ -763,6 +768,7 @@
 				83B45C75242B3AF800898145 /* CYFifoBuffer.m in Sources */,
 				F267D7F7218FEFB70043C680 /* NSObject+CYCategory.m in Sources */,
 				F2E46DEC216AF4FD0066A068 /* CYLocation.m in Sources */,
+				833B9790253EC9A500D3D5AC /* CYVideo2Image.m in Sources */,
 				F2D294D22277ECF90057DC5F /* CYTTS.m in Sources */,
 				F2D294D82277EEAC0057DC5F /* CYASR.m in Sources */,
 				F2E46E13216AFC940066A068 /* NSString+CYCategory.m in Sources */,

@@ -55,7 +55,6 @@
 
 /* 获取原始的视频帧输出 */
 - (void)videoTool:(CYVideoTool *)tool getSampleBuffer:(CMSampleBufferRef)bufferRef {
-    NSLog(@"111");
 }
 
 /* 获取视频帧转化为图像的输出,
