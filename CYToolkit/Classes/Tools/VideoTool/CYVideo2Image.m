@@ -12,7 +12,9 @@
 
 @interface CYVideo2Image()
 
-@property (nonatomic, strong) AVAssetImageGenerator *generator;
+@property (nonatomic, strong) AVAssetReader *reader;
+@property (nonatomic, strong) AVAssetReaderTrackOutput *trackOutput;
+@property (nonatomic, assign) NSInteger frameIndex;
 
 @end
 
@@ -21,7 +23,6 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _framePerSecond = 25;
     }
     
     return self;
@@ -49,6 +50,65 @@
     return tmpMulArray.copy;;
 }
 
+#pragma mark - MISC
+
+- (void)__fillReaderAndOutput:(NSString *)videoPath {
+    
+    /* 创建 Url Asset */
+    NSURL *pathUrl = [NSURL fileURLWithPath:videoPath];
+    AVURLAsset *tmpAsset = [AVURLAsset assetWithURL:pathUrl];
+    
+    /* 创建 Reader */
+    AVAssetReader *tmpReader = [[AVAssetReader alloc] initWithAsset:tmpAsset error:nil];
+    
+    /* Add output to Reader */
+    AVAssetTrack *vtrack = [[tmpAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    NSDictionary *dictionary = @{
+        (NSString *)kCVPixelBufferPixelFormatTypeKey:@(kCVPixelFormatType_32BGRA)
+    };
+    AVAssetReaderTrackOutput *tmpOutput = [[AVAssetReaderTrackOutput alloc] initWithTrack:vtrack outputSettings:dictionary];
+    if ([tmpReader canAddOutput:tmpOutput]) {
+        [tmpReader addOutput:tmpOutput];
+    }
+    
+    _reader = tmpReader;
+    _trackOutput = tmpOutput;
+}
+
+- (UIImage *)__ImageFromBufferRef:(CMSampleBufferRef)buffer {
+    
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(buffer);
+    
+    /* Image Buffer --> UIImage*/
+    CVPixelBufferLockBaseAddress(imageBuffer,0);
+    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
+    size_t width = CVPixelBufferGetWidth(imageBuffer);
+    size_t height = CVPixelBufferGetHeight(imageBuffer);
+    int bitsPerComponent = 8;
+
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef newContext = CGBitmapContextCreate(baseAddress,
+                                                    width, height,
+                                                    bitsPerComponent,
+                                                    bytesPerRow,
+                                                    colorSpace,
+                                                    kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+
+    CGImageRef newImage = CGBitmapContextCreateImage(newContext);
+    CVPixelBufferUnlockBaseAddress(imageBuffer, 0);
+
+    UIImage *tmpImage = [UIImage imageWithCGImage:newImage];
+    
+    /* 释放内存 */
+    CGContextRelease(newContext);
+    CGColorSpaceRelease(colorSpace);
+    CFRelease(newImage);
+    CFRelease(buffer);
+    
+    return tmpImage;
+}
+
 #pragma mark -
 
 - (void)start {
@@ -61,36 +121,45 @@
         return;
     }
     
-    /* 创建Url Asset */
-    NSURL *pathUrl = [NSURL fileURLWithPath:_videoPath];
-    AVURLAsset *tmpAsset = [AVURLAsset assetWithURL:pathUrl];
-    
-    /* 创建Generator */
-    _generator = [[AVAssetImageGenerator alloc] initWithAsset:tmpAsset];
-    _generator.requestedTimeToleranceBefore = kCMTimeZero;
-    _generator.requestedTimeToleranceAfter = kCMTimeZero;
+    /* 填充新的 Reader output */
+    [self __fillReaderAndOutput:_videoPath];
 
+    
     /* 开始数据收集 */
-    NSArray *timeArray = [self __timeArrayWithDuration:tmpAsset.duration fps:_framePerSecond];
+    if (NO == [_reader startReading]) {
+        /* 开启读取失败 */
+        return;
+    }
+    
     __weak typeof(self) weakSelf = self;
-    [_generator
-     generateCGImagesAsynchronouslyForTimes:timeArray
-     completionHandler:^(CMTime requestedTime,
-                         CGImageRef  _Nullable image,
-                         CMTime actualTime,
-                         AVAssetImageGeneratorResult result,
-                         NSError * _Nullable error) {
-        UIImage *tmpImage = [UIImage imageWithCGImage:image];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
-        if ([weakSelf.delegate respondsToSelector:@selector(v2itool:feedbackImage:frameTime:)]) {
-            [weakSelf.delegate v2itool:self feedbackImage:tmpImage frameTime:CMTimeGetSeconds(actualTime)];
+        while (AVAssetReaderStatusReading == [weakSelf.reader status]) {
+
+            weakSelf.frameIndex++;
+            CMSampleBufferRef buffer = [weakSelf.trackOutput copyNextSampleBuffer];
+            if (!buffer) {
+                continue;
+            }
+            UIImage *tarImage = [weakSelf __ImageFromBufferRef:buffer];
+            
+            if ([weakSelf.delegate respondsToSelector:@selector(v2itool:feedbackImage:frameIndex:)]) {
+                [weakSelf.delegate v2itool:weakSelf feedbackImage:tarImage frameIndex:weakSelf.frameIndex];
+            }
         }
-    }];
+        
+        if ([weakSelf.delegate respondsToSelector:@selector(v2itoolDidFinishTrack:)]) {
+            [weakSelf.delegate v2itoolDidFinishTrack:weakSelf];
+        }
+    });
+    
 }
 
 - (void)stop {
-    [_generator cancelAllCGImageGeneration];
-    _generator = nil;
+    [_reader cancelReading];
+    _reader = nil;
+    _trackOutput = nil;
+    _frameIndex = -1;
 }
 
 @end

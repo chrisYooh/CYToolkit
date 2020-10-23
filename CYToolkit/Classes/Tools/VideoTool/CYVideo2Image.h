@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol CYVideo2ImageDelegate <NSObject>
 
 - (void)v2itool:(CYVideo2Image *)tool postError:(NSError *)error;
-- (void)v2itool:(CYVideo2Image *)tool feedbackImage:(UIImage *)image frameTime:(NSTimeInterval)frameTime;
+- (void)v2itool:(CYVideo2Image *)tool feedbackImage:(UIImage *)image frameIndex:(NSTimeInterval)frameIndex;
+- (void)v2itoolDidFinishTrack:(CYVideo2Image *)tool;
 
 @end
 
@@ -25,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id<CYVideo2ImageDelegate> delegate;
 
 @property (nonatomic, strong) NSString *videoPath;          /* 视频路径 */
-@property (nonatomic, assign) NSInteger framePerSecond;     /* 每秒反馈的视频帧数, 默认25 */
 
 - (void)start;
 - (void)stop;

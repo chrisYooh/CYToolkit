@@ -12,6 +12,7 @@
 		833B96E82536A8AC00D3D5AC /* CYVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96E72536A8AC00D3D5AC /* CYVoicePlayer.m */; };
 		833B96EE2536A8D700D3D5AC /* CYVoiceCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */; };
 		833B9790253EC9A500D3D5AC /* CYVideo2Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 833B978F253EC9A500D3D5AC /* CYVideo2Image.m */; };
+		833B97A3253FE0CF00D3D5AC /* customer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 833B97A1253FE0CE00D3D5AC /* customer.mp4 */; };
 		83AFC78922B4D8AD007B266A /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76C22B4D8AD007B266A /* 1.png */; };
 		83AFC78A22B4D8AD007B266A /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76D22B4D8AD007B266A /* 2.png */; };
 		83AFC78B22B4D8AD007B266A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFC76E22B4D8AD007B266A /* 3.png */; };
@@ -94,6 +95,7 @@
 		833B96ED2536A8D700D3D5AC /* CYVoiceCollector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVoiceCollector.m; sourceTree = "<group>"; };
 		833B978E253EC9A500D3D5AC /* CYVideo2Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYVideo2Image.h; sourceTree = "<group>"; };
 		833B978F253EC9A500D3D5AC /* CYVideo2Image.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYVideo2Image.m; sourceTree = "<group>"; };
+		833B97A1253FE0CE00D3D5AC /* customer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = customer.mp4; sourceTree = "<group>"; };
 		83AFC76C22B4D8AD007B266A /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		83AFC76D22B4D8AD007B266A /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		83AFC76E22B4D8AD007B266A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		F2E46DA8216AECBC0066A068 = {
 			isa = PBXGroup;
 			children = (
+				833B97A1253FE0CE00D3D5AC /* customer.mp4 */,
 				F2A391B222323AE00036F827 /* test.png */,
 				83AFC76B22B4D8AD007B266A /* test */,
 				F2E46DE6216AF4A40066A068 /* Classes */,
@@ -697,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83AFC78A22B4D8AD007B266A /* 2.png in Resources */,
+				833B97A3253FE0CF00D3D5AC /* customer.mp4 in Resources */,
 				83AFC78922B4D8AD007B266A /* 1.png in Resources */,
 				83AFC79022B4D8AD007B266A /* 8.png in Resources */,
 				83AFC79322B4D8AD007B266A /* 11.png in Resources */,
