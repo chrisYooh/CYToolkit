@@ -1,11 +1,3 @@
-CYToolkit/CYToolkit.xcodeproj/xcuserdata
-CYToolkit/CYToolkit.xcodeproj/xcshareddata
-CYToolkit/CYToolkit.xcodeproj/project.xcworkspace
-
-
-CYToolkit/CYToolkit.xcworkspace/xcuserdata/
-CYToolkit/CYToolkit.xcworkspace/xcshareddata/
-
-CYToolkit/Pods/Pods.xcodeproj/xcuserdata
-CYToolkit/Pods/Pods.xcodeproj/xcshareddata
-CYToolkit/Pods/Pods.xcodeproj/project.xcworkspace
+xcuserdata
+xcshareddata
+project.xcworkspace
