@@ -12,14 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (CYCategory)
 
-#pragma makr - Method Swizzling
-
-/* 替换实例方法 */
-+ (void)cySwizzlingInstanceMethodWithOriginalSel:(SEL)orignalSel swizzledSel:(SEL)swizzledSel;
-
-/* 替换类方法 */
-+ (void)cySwizzlingClassMethodWithOriginalSel:(SEL)orignalSel swizzledSel:(SEL)swizzledSel;
-
 #pragma mark - Instance Save & Load
 
 /* 缓存/读取 类，必须遵照NSCoding协议 */

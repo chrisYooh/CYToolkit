@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[UIViewController class] cyInstanceDebugHook:@selector(viewDidAppear:)];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -13,34 +13,6 @@
 
 @implementation NSObject (CYCategory)
 
-#pragma mark -
-
-+ (void)cySwizzlingInstanceMethodWithOriginalSel:(SEL)originalSel swizzledSel:(SEL)swizzledSel {
-    
-    Class class = [self class];
-    
-    SEL originalSelector = originalSel;
-    SEL swizzledSelector = swizzledSel;
-    
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-    
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-}
-
-+ (void)cySwizzlingClassMethodWithOriginalSel:(SEL)originalSel swizzledSel:(SEL)swizzledSel {
-    
-    Class class = [self class];
-    
-    SEL originalSelector = originalSel;
-    SEL swizzledSelector = swizzledSel;
-    
-    Method originalMethod = class_getClassMethod(class, originalSelector);
-    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
-    
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-}
-
 #pragma mark - Instance Save & Load
 
 - (BOOL)cySaveForKey:(NSString *)objKey {

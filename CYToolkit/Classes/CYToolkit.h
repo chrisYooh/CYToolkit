@@ -16,6 +16,7 @@
 #import "NSDate+CYCategory.h"
 #import "NSDecimalNumber+CYCategory.h"
 #import "NSObject+CYCategory.h"
+#import "NSObject+CYMethodSwizzling.h"
 #import "NSString+CYCategory.h"
 #import "NSString+CYTTS.h"
 #import "UIButton+CYCategory.h"
