@@ -28,9 +28,9 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
     
     /* 执行 hook 逻辑 */
     if (isHooked) {
-        NSLog(@"%@ %@ called",
-              NSStringFromClass([self class]),
-              NSStringFromSelector(originalSelector));
+        printf("【%s】[%s] Called\n",
+              NSStringFromClass([self class]).UTF8String ,
+              NSStringFromSelector(originalSelector).UTF8String);
         invocation.selector = aliasSelector;
         [invocation invoke];
     }
@@ -77,7 +77,12 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
 #pragma mark -
 
 + (void)cyInstanceDebugHook:(SEL)tarSel {
-    NSLog(@"注意！！！该方法仅做调试用，未考虑过多边界条件！！！请勿在正式代码中调用！！！");
+    
+    if (![self instancesRespondToSelector:tarSel]) {
+        NSLog(@"【%@】未实现 [%@] 方法，无法进行hook", NSStringFromClass([self class]), NSStringFromSelector(tarSel));
+        return;
+    }
+        
     [self __replaceSelToMsgForward:tarSel];
     [self __replaceMsgForward];
 }
@@ -98,7 +103,13 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
 }
 
 + (void)__replaceMsgForward {
+    
     Class klass = [self class];
+    if ([klass instancesRespondToSelector:NSSelectorFromString(__fwdInvocationSelName)]) {
+        /* 方法已经进行了hook，不重复hook */
+        return;
+    }
+    
     IMP originalImplementation = class_replaceMethod(klass, @selector(forwardInvocation:), (IMP)__cy_fwdInvocation_imp_, "v@:@");
     if (originalImplementation) {
         class_addMethod(klass, NSSelectorFromString(__fwdInvocationSelName), originalImplementation, "v@:@");
