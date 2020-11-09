@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 /* 替换对应的实例方法，在方法调用前打印对应的调用信息。 */
 + (void)cyInstanceDebugHook:(SEL)tarSel;
 
+/* 替换对应的实例方法，在方法调用前打印对应的调用信息，父类的相关方法也同步hook */
++ (void)cyInstanceInheritDebugHook:(SEL)tarSel;
+
 @end
 
 NS_ASSUME_NONNULL_END

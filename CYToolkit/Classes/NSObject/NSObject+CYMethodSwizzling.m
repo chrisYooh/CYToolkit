@@ -28,9 +28,11 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
     
     /* 执行 hook 逻辑 */
     if (isHooked) {
-        printf("【%s】[%s] Called\n",
-              NSStringFromClass([self class]).UTF8String ,
-              NSStringFromSelector(originalSelector).UTF8String);
+        printf("【CYDebug】%s  --  %s\n",
+               NSStringFromSelector(originalSelector).UTF8String,
+               NSStringFromClass([self class]).UTF8String
+              );
+        
         invocation.selector = aliasSelector;
         [invocation invoke];
     }
@@ -77,22 +79,55 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
 #pragma mark -
 
 + (void)cyInstanceDebugHook:(SEL)tarSel {
-    
-    if (![self instancesRespondToSelector:tarSel]) {
-        NSLog(@"【%@】未实现 [%@] 方法，无法进行hook", NSStringFromClass([self class]), NSStringFromSelector(tarSel));
-        return;
-    }
-        
-    [self __replaceSelToMsgForward:tarSel];
-    [self __replaceMsgForward];
+    [self __cyInstanceDebugHook:tarSel handleSuperClasses:NO];
+}
+
++ (void)cyInstanceInheritDebugHook:(SEL)tarSel {
+    [self __cyInstanceDebugHook:tarSel handleSuperClasses:YES];
 }
 
 #pragma mark -
+
++ (void)__cyInstanceDebugHook:(SEL)tarSel handleSuperClasses:(BOOL)handleSuperClasses {
+        
+    Class currentClass = [self class];
+    [self __class:currentClass instanceDebugHook:tarSel];
+    
+    if (NO == handleSuperClasses) {
+        return;
+    }
+    
+    while ((currentClass = class_getSuperclass(currentClass))) {
+        [self __class:currentClass instanceDebugHook:tarSel];
+    }
+}
+
++ (void)__class:(Class)klass instanceDebugHook:(SEL)tarSel {
+    
+    if (![klass instancesRespondToSelector:tarSel]) {
+        printf("【Hook失败】 %s -- %s 未实现，无法Hook。 \n",
+               NSStringFromSelector(tarSel).UTF8String,
+               NSStringFromClass([self class]).UTF8String
+              );
+        return;
+    }
+    
+    [klass __replaceSelToMsgForward:tarSel];
+    [klass __replaceMsgForward];
+}
 
 + (void)__replaceSelToMsgForward:(SEL)tarSel {
     Class klass = [self class];
     SEL selector = tarSel;
     SEL aliasSelector = __aliasSel(selector);
+    
+    if ([self instancesRespondToSelector:aliasSelector]) {
+//        printf("【Hook失败】 %s -- %s 已Hook，无需重复Hook。 \n",
+//               NSStringFromSelector(tarSel).UTF8String,
+//               NSStringFromClass([self class]).UTF8String
+//              );
+        return;
+    }
     
     Method targetMethod = class_getInstanceMethod(klass, selector);
     IMP targetMethodIMP = method_getImplementation(targetMethod);
