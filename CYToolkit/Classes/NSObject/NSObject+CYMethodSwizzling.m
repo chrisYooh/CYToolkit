@@ -28,8 +28,9 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
     
     /* 执行 hook 逻辑 */
     if (isHooked) {
-        printf("【CYDebug】%s  --  %s\n",
+        printf("【CYDebug】%s  --  %p (%s)\n",
                NSStringFromSelector(originalSelector).UTF8String,
+               self,
                NSStringFromClass([self class]).UTF8String
               );
         
@@ -76,14 +77,8 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
     method_exchangeImplementations(originalMethod, swizzledMethod);
 }
 
-#pragma mark -
-
 + (void)cyInstanceDebugHook:(SEL)tarSel {
     [self __cyInstanceDebugHook:tarSel handleSuperClasses:NO];
-}
-
-+ (void)cyInstanceInheritDebugHook:(SEL)tarSel {
-    [self __cyInstanceDebugHook:tarSel handleSuperClasses:YES];
 }
 
 #pragma mark -
@@ -107,7 +102,7 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
     if (![klass instancesRespondToSelector:tarSel]) {
         printf("【Hook失败】 %s -- %s 未实现，无法Hook。 \n",
                NSStringFromSelector(tarSel).UTF8String,
-               NSStringFromClass([self class]).UTF8String
+               NSStringFromClass(klass).UTF8String
               );
         return;
     }
@@ -117,17 +112,10 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
 }
 
 + (void)__replaceSelToMsgForward:(SEL)tarSel {
+    
     Class klass = [self class];
     SEL selector = tarSel;
     SEL aliasSelector = __aliasSel(selector);
-    
-    if ([self instancesRespondToSelector:aliasSelector]) {
-//        printf("【Hook失败】 %s -- %s 已Hook，无需重复Hook。 \n",
-//               NSStringFromSelector(tarSel).UTF8String,
-//               NSStringFromClass([self class]).UTF8String
-//              );
-        return;
-    }
     
     Method targetMethod = class_getInstanceMethod(klass, selector);
     IMP targetMethodIMP = method_getImplementation(targetMethod);
@@ -150,6 +138,5 @@ static void __cy_fwdInvocation_imp_(__unsafe_unretained NSObject *self, SEL sele
         class_addMethod(klass, NSSelectorFromString(__fwdInvocationSelName), originalImplementation, "v@:@");
     }
 }
-
 
 @end
